@@ -23,6 +23,12 @@
 ER図
 https://drive.google.com/file/d/1tOlxxRnVNaCmnJQ834trD2325pz7IOBg/view?usp=sharing
 
+アプリケーション詳細設計書
+https://docs.google.com/spreadsheets/d/1QNAXEXfDRz31lNu2_Yh1LUC5XIBRoWNe_vP_EqblEi4/edit?usp=sharing
+
+テーブル定義書
+https://docs.google.com/spreadsheets/d/1i_A33flq_KfqprKn0EZSo8nw8lSTLraQnATyHEkJJWI/edit?usp=sharing
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
