@@ -1,7 +1,7 @@
-class ParkingsController < ApplicationController
-  def index
+class Customers::ParkingsController < ApplicationController
+  def show
   end
 
-  def show
+  def index
   end
 end
