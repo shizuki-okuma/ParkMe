@@ -1,5 +1,24 @@
 Rails.application.routes.draw do
   
+  namespace :providers do
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/update'
+    get 'customers/quit'
+    get 'customers/destroy'
+  end
+  namespace :customers do
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/update'
+    get 'customers/quit'
+    get 'customers/destroy'
+  end
+  get 'customers/show'
+  get 'customers/edit'
+  get 'customers/update'
+  get 'customers/quit'
+  get 'customers/destroy'
   get '/'=>'homes#top'
   resources :parkings, only: [:index, :show]
   
