@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_03_134305) do
+ActiveRecord::Schema.define(version: 2023_05_04_120245) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -49,6 +49,22 @@ ActiveRecord::Schema.define(version: 2023_05_03_134305) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "parkings", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.string "zip_code", null: false
+    t.string "address", null: false
+    t.integer "amount", null: false
+    t.integer "price", null: false
+    t.boolean "is_active", null: false
+    t.integer "provider_id", null: false
+    t.integer "rental_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["provider_id"], name: "index_parkings_on_provider_id"
+    t.index ["rental_id"], name: "index_parkings_on_rental_id"
+  end
+
   create_table "providers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -69,4 +85,6 @@ ActiveRecord::Schema.define(version: 2023_05_03_134305) do
     t.index ["reset_password_token"], name: "index_providers_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "parkings", "providers"
+  add_foreign_key "parkings", "rentals"
 end

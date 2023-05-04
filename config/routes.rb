@@ -1,33 +1,26 @@
 Rails.application.routes.draw do
   
-  namespace :customers do
-    get 'parkings/show'
-    get 'parkings/index'
-  end
-  namespace :providers do
-    get 'parkings/new'
-    get 'parkings/create'
-    get 'parkings/edit'
-    get 'parkings/update'
-  end
-  namespace :providers do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-    get 'customers/quit'
-    get 'customers/destroy'
+  root to: 'homes#top'
+
+  scope module: :providers do
+    get 'providers/my_page' => 'providers#show'
+    resources :providers, only:[:edit, :update, :destroy] do
+      member do
+        get 'quit'
+      end
+    end  
+    resources :parkings, only:[:new, :create, :edit, :update]
   end
   
-  namespace :customers do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-    get 'customers/quit'
-    get 'customers/destroy'
+  scope module: :customers do
+    get 'customers/my_page' => 'customers#show'
+    resources :customers, only:[:edit, :update, :destroy] do
+      member do
+        get 'quit'
+      end
+    end
+    resources :parkings, only:[:index, :show]
   end
-  
-  get '/'=>'homes#top'
-  
   
   # 管理者用
   # URL /admin/sign_in ...

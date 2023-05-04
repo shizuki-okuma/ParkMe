@@ -5,7 +5,7 @@
     <h3>登録情報</h3>
     
     <div class='col-10'>
-      <%= link_to "編集する", customers_edit_path(@customer), class: 'btn btn-success' %>
+      <%= link_to "編集する", providers_edit_path(@provider), class: 'btn btn-success' %>
     </div>
   </div>
   
@@ -14,33 +14,33 @@
       <thead class="thead-light">
         <tr>
           <th>名前</th>
-            <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+            <td><%= @provider.last_name %> <%= @provider.first_name %></td>
         </tr>
         <tr>
         <th>カナ</th>
-          <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+          <td><%= @provider.last_name_kana %> <%= @provider.first_name_kana %></td>
         </tr>
         <tr>
           <th>郵便番号</th>
-            <td><%= @customer.zip_code %></td>
+            <td><%= @provider.zip_code %></td>
         </tr>
         <tr>
           <th>住所</th>
-            <td><%= @customer.address %></td>
+            <td><%= @provider.address %></td>
         </tr>
         <tr>
           <th>電話番号</th>
-            <td><%= @customer.phone_number %></td>
+            <td><%= @provider.phone_number %></td>
         </tr>
         <tr>
           <th>メールアドレス</th>
-            <td><%= @customer.email %></td>
+            <td><%= @provider.email %></td>
         </tr>
       </thead>
     </table>
   </div>
   <div class="row my-3">
-    <h3>レンタル履歴</h3>
+    <h3 >提供履歴</h3>
       <div class='col-10'>
         <%#= link_to "一覧を見る", rentals_path, class: 'btn btn-primary' %>
       </div>

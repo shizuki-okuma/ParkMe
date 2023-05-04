@@ -1,2 +1,0 @@
-module Providers::CustomersHelper
-end
