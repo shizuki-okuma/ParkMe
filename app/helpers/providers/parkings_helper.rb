@@ -1,0 +1,2 @@
+module Providers::ParkingsHelper
+end

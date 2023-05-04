@@ -9,7 +9,7 @@ Rails.application.routes.draw do
         get 'quit'
       end
     end  
-    resources :parkings, only:[:new, :create, :edit, :update]
+    resources :parkings, only:[:new, :create, :edit, :update, :show]
   end
   
   scope module: :customers do
