@@ -6,7 +6,7 @@ class Providers::ParkingsController < ApplicationController
   def create
     @parking = Parking.new(parking_params) # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する
     if @parking.save
-      redirect_to parking_path(@parking) #保存成功時showページへ移動
+      redirect_to parking_path(@parking)#保存成功時showページへ移動
     else
       render :new #保存失敗時newページへ移動
     end
@@ -33,7 +33,7 @@ class Providers::ParkingsController < ApplicationController
 
   def parking_params
     params.require(:parking).permit(
-      :name, :description, :car_model_id, :price, :is_active,
-      :amount, :address, :zip_code, :provider_id) # requireメソッドでオブジェクト名を指定,permitメソッドでキーを指定
+      :name, :description, :price, :is_active,
+      :amount, :address, :zip_code, car_model_ids:[]) # requireメソッドでオブジェクト名を指定,permitメソッドでキーを指定
   end
 end

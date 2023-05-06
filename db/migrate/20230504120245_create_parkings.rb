@@ -8,9 +8,6 @@ class CreateParkings < ActiveRecord::Migration[6.1]
       t.integer :amount, null: false
       t.integer :price, null: false
       t.boolean :is_active, null: false
-      t.references :provider, null: false, foreign_key: true
-      t.references :rental, null: false, foreign_key: true
-
       t.timestamps
     end
   end

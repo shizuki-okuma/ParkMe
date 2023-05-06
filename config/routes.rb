@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   root to: 'homes#top'
 
   scope module: :providers do
-    get 'providers/my_page' => 'providers#show'
+    
     resources :providers, only:[:edit, :update, :destroy] do
+      collection do
+        get 'my_page' => 'providers#show'
+      end
       member do
         get 'quit'
       end
@@ -13,9 +16,13 @@ Rails.application.routes.draw do
   end
   
   scope module: :customers do
-    get 'customers/my_page' => 'customers#show'
+    
     resources :customers, only:[:edit, :update, :destroy] do
-      member do
+    collection do
+      get 'my_page' => 'customers#show'
+    end
+    
+    member do
         get 'quit'
       end
     end

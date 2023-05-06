@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_06_041401) do
+ActiveRecord::Schema.define(version: 2023_05_06_101234) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2023_05_06_041401) do
   end
 
   create_table "car_models", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 2023_05_06_041401) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "parking_sizes", force: :cascade do |t|
+    t.integer "amount"
+    t.integer "car_model_id", null: false
+    t.integer "parking_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_model_id"], name: "index_parking_sizes_on_car_model_id"
+    t.index ["parking_id"], name: "index_parking_sizes_on_parking_id"
+  end
+
   create_table "parkings", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
@@ -63,12 +73,8 @@ ActiveRecord::Schema.define(version: 2023_05_06_041401) do
     t.integer "amount", null: false
     t.integer "price", null: false
     t.boolean "is_active", null: false
-    t.integer "provider_id", null: false
-    t.integer "rental_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["provider_id"], name: "index_parkings_on_provider_id"
-    t.index ["rental_id"], name: "index_parkings_on_rental_id"
   end
 
   create_table "providers", force: :cascade do |t|
@@ -91,6 +97,6 @@ ActiveRecord::Schema.define(version: 2023_05_06_041401) do
     t.index ["reset_password_token"], name: "index_providers_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "parkings", "providers"
-  add_foreign_key "parkings", "rentals"
+  add_foreign_key "parking_sizes", "car_models"
+  add_foreign_key "parking_sizes", "parkings"
 end

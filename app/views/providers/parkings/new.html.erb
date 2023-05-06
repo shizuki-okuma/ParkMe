@@ -1,3 +1,4 @@
+<%= render 'providers/shared/error_messages', resource: @parking %>
 <div class="container">
   <div class="row">
     <div class="col-md-8 mt-5 mx-auto">
@@ -15,22 +16,32 @@
           </tr>
           
           <tr>
+            <th><%= f.label "郵便番号" %></th>
+            <td><%= f.text_field :zip_code, class: "form-control", :placeholder => "000000" %></td>
+          </tr>
+          
+          <tr>
+            <th><%= f.label "住所" %></th>
+            <td><%= f.text_field :address, class: "form-control", :placeholder => "〇〇県〇〇市〇〇区" %></td>
+          </tr>
+          
+          <tr>
+            <th><%= f.label "台数" %></th>
+            <td><%= f.text_field :amount, class: "form-control", :placeholder => "1" %></td>
+          </tr>
+          
+          <tr>
             <td><%= f.label "商品説明" %></td>
             <td><%= f.text_area :description, class: "form-control", :placeholder => "ここに説明文を記述します" %></td>
           </tr>
           
           <tr>
             <td><%= f.label "車種" %></td>
-            <!--チェックボックスで駐車可能車種登録フォーム作成-->
+            <!--コレクションチェックボックスで駐車可能車種登録フォーム作成-->
             <td>
-              <form action="#" method="post">
-              	<input type="checkbox" name="軽自動車" value="1">軽自動車
-              	<input type="checkbox" name="コンパクトカー" value="3">コンパクトカー
-              	<input type="checkbox" name="中型車" value="4">中型車
-              	<input type="checkbox" name="ワンボックス" value="6">ワンボックス
-              	<input type="checkbox" name="トラック" value="2">トラック
-              	<input type="checkbox" name="バイクl" value="5">バイク
-              </form>
+              <%= f.collection_check_boxes(:car_model_ids, CarModel.all, :id, :name) do |b| %>
+                <%= b.label { b.check_box + b.text } %>
+              <% end %>
             </td>
             </tr>
           
