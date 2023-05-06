@@ -19,7 +19,7 @@ class Providers::ParkingsController < ApplicationController
   def update
     @parking = Parking.find(params[:id])
     if @parking.update(parking_params) 
-      redirect_to admin_parking_path(@parking) #編集保存成功時showページへ移動
+      redirect_to parking_path(@parking) #編集保存成功時showページへ移動
     else
       render :edit #編集保存成功時editページへ移動
     end
@@ -31,9 +31,9 @@ class Providers::ParkingsController < ApplicationController
   
   private
 
-  def parking_params
+  def parking_params # requireメソッドでオブジェクト名を指定,permitメソッドでキーを指定
     params.require(:parking).permit(
       :name, :description, :price, :is_active,
-      :amount, :address, :zip_code, car_model_ids:[]) # requireメソッドでオブジェクト名を指定,permitメソッドでキーを指定
+      :amount, :address, :zip_code, car_model_ids:[]) #idsにすることで複数台のコレクションチェックボックスから複数データを送ることが可能
   end
 end
