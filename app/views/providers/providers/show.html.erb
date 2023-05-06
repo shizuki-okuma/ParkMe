@@ -5,7 +5,7 @@
     <h3>登録情報</h3>
     
     <div class='col-10'>
-      <%= link_to "編集する", providers_edit_path(@provider), class: 'btn btn-success' %>
+      <%= link_to "編集する", edit_provider_path(@provider), class: 'btn btn-success' %>
     </div>
   </div>
   
@@ -39,11 +39,22 @@
       </thead>
     </table>
   </div>
+  
+  <div class="row my-3">
+    <h3>提供駐車場</h3>
+      <div class='col-10'>
+        <!--駐車場のeach文-->
+        
+        <%= link_to "詳細を見る", parking_path(@parking), class: 'btn btn-primary' %>
+      </div>
+  </div>
+  
   <div class="row my-3">
     <h3 >提供履歴</h3>
       <div class='col-10'>
         <%#= link_to "一覧を見る", rentals_path, class: 'btn btn-primary' %>
       </div>
   </div>
+  
   </div>
 </div>

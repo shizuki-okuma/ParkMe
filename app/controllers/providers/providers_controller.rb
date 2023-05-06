@@ -1,6 +1,7 @@
 class Providers::ProvidersController < ApplicationController
   def show
     @provider = Provider.find(current_provider.id)
+    @parkings = Parking.find(current_provider.id)
   end
 
   def edit
