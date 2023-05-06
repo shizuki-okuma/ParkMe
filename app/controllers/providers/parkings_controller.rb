@@ -6,7 +6,7 @@ class Providers::ParkingsController < ApplicationController
   def create
     @parking = Parking.new(parking_params) # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する
     if @parking.save
-      redirect_to parking_parkings_path(@parking) #保存成功時showページへ移動
+      redirect_to parking_path(@parking) #保存成功時showページへ移動
     else
       render :new #保存失敗時newページへ移動
     end
