@@ -1,6 +1,7 @@
 class CreateParkings < ActiveRecord::Migration[6.1]
   def change
     create_table :parkings do |t|
+      t.references :provider, null: false
       t.string :name, null: false
       t.text :description, null: false
       t.string :zip_code, null: false

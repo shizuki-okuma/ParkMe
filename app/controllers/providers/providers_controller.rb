@@ -1,7 +1,7 @@
 class Providers::ProvidersController < ApplicationController
   def show
     @provider = Provider.find(current_provider.id)
-    @parkings = Parking.find(current_provider.id)
+    @parkings = Parking.where(provider_id: current_provider.id) #登録した駐車場のみを表示
   end
 
   def edit

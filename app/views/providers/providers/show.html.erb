@@ -43,9 +43,34 @@
   <div class="row my-3">
     <h3>提供駐車場</h3>
       <div class='col-10'>
-        <!--駐車場のeach文-->
         
-        <%= link_to "詳細を見る", parking_path(@parking), class: 'btn btn-primary' %>
+        <table class="table">
+        <thead>
+          <tr class="table-active">
+            <th>駐車場ID</th>
+            <th>駐車場名</th>
+            <th>駐車場郵便番号</th>
+            <th>駐車場住所</th>
+            <th>駐車場ステータス</th>
+            <th>駐車場詳細</th>
+          </tr>
+        </thead>
+        
+        <!--登録した駐車場一覧-->
+        <% @parkings.each do |parking| %>
+          <tbody>
+            <tr>
+              <td><%= parking.id %></td>
+              <td><%= parking.name %></td>
+              <td><%= parking.zip_code %></td>
+              <td><%= parking.address %></td>
+              <td><%= parking.is_active %></td>
+              <td><%= link_to "詳細を見る", parking_path(parking), class: 'btn btn-primary' %></td>
+            </tr>
+          </tbody>
+        <% end %>
+        </table>
+        
       </div>
   </div>
   

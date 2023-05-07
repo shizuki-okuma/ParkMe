@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2023_05_06_101234) do
   end
 
   create_table "parkings", force: :cascade do |t|
+    t.integer "provider_id", null: false
     t.string "name", null: false
     t.text "description", null: false
     t.string "zip_code", null: false
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 2023_05_06_101234) do
     t.boolean "is_active", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["provider_id"], name: "index_parkings_on_provider_id"
   end
 
   create_table "providers", force: :cascade do |t|
