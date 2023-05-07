@@ -1,4 +1,7 @@
 <table class="table table-hover table-inverse">
+  <!--検索フォーム-->
+  <%= render 'searches/search' %>
+  
   <!--検索対象モデルがparkingの時 -->
   <% if @range == "駐車場" %>
     <tbody>
