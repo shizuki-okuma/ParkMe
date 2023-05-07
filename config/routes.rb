@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
   root to: 'homes#top'
-  get "search" => "searches#search"
+  get "search" => "searches#index"
+  
   scope module: :providers do
     
     resources :providers, only:[:edit, :update, :destroy] do

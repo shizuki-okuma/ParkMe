@@ -8,13 +8,14 @@ class Parking < ApplicationRecord
   
   def self.looks(search, word)
     if search == "perfect_match"
-      @parking = Parking.where("address LIKE?", "#{word}")
+      @parking = Parking.where("name LIKE?", "#{word}")
     elsif search == "forward_match"
-      @parking = Parking.where("address LIKE?","#{word}%")
+      @parking = Parking.where("name LIKE?","#{word}%")
     elsif search == "backward_match"
-      @parking = Parking.where("address LIKE?","%#{word}")
+      @parking = Parking.where("name LIKE?","%#{word}")
     elsif search == "partial_match"
-      @parking = Parking.where("address LIKE?","%#{word}%")
+      # byebug
+      @parking = Parking.where("name LIKE?","%#{word}%")
     else
       @parking = Parking.all
     end

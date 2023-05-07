@@ -1,28 +1,10 @@
 <h1>Homes#top</h1>
 
 <!--検索窓-->
-<%= render 'search' %>
-<table class="table table-hover table-inverse">
-  <!--検索対象モデルがparkingの時 -->
-  <% if @range == "Parking" %>
-    <tbody>
-      <% @parkings.each do |parking| %>
-        <tr>
-          <td><%= parking.name %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  <% else %>
-    <!--検索対象モデルがparkingではない時(= 検索対象モデルがcar_modelの時) -->
-    <tbody>
-      <% @car_models.each do |car_model| %>
-        <tr>
-          <td><%= car_model.name %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  <% end %>
-</table>
+<%= render 'searches/search' %>
+<!--検索一覧-->
+<%#= render 'searches/index' %>
+
 
 <p>ParkMeを選ぶ理由</p>
 point1

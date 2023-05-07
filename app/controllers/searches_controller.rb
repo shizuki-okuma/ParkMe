@@ -1,12 +1,16 @@
 class SearchesController < ApplicationController
   
-  def search
+  def index
+    # byebug
     @range = params[:range]
-    if @range == "Parking"
-      @parkings = Parking.looks(params[:search],params[:word])
-    else
-      @car_models = CarModel.looks(params[:search],params[:word])
-    end
+      if @range == "駐車場"
+        @parkings = Parking.looks(params[:search],params[:word])
+        # byebug
+      else
+        @car_models = CarModel.looks(params[:search],params[:word])
+      end
+    # @car_models = CarModel.all
+    # @parkings = Parking.all
   end
 end
 
