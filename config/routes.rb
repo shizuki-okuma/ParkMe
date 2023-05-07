@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   root to: 'homes#top'
-
+  get "search" => "searches#search"
   scope module: :providers do
     
     resources :providers, only:[:edit, :update, :destroy] do
@@ -26,9 +26,11 @@ Rails.application.routes.draw do
         get 'quit'
       end
     end
-    resources :parkings, only:[:index, :show]
+    
+    resources :parkings, only:[:index, :show, :search] 
+    
   end
-  
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admins,skip: [:passwords], controllers: {
