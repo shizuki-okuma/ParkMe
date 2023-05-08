@@ -13,7 +13,7 @@ Rails.application.routes.draw do
         get 'quit'
       end
     end  
-    resources :parkings, only:[:new, :create, :edit, :update, :show]
+    resources :parkings, only:[ :show, :new, :create, :edit, :update]
   end
   
   scope module: :customers do
@@ -24,12 +24,20 @@ Rails.application.routes.draw do
     end
     
     member do
-        get 'quit'
+      get 'quit'
       end
     end
     
     resources :parkings, only:[:index, :show] 
-    resources :rentals, only:[:index, :show, :new, :create, :thanks, :confirm] 
+    resources :rentals, only:[:index, :show, :new, :create] do
+    collection do
+      get 'thanks'
+    end
+    
+    member do
+      post 'confirm'
+      end
+    end
   end
 
   # 管理者用
