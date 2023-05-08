@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_06_101234) do
+ActiveRecord::Schema.define(version: 2023_05_08_051946) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -99,6 +99,22 @@ ActiveRecord::Schema.define(version: 2023_05_06_101234) do
     t.index ["reset_password_token"], name: "index_providers_on_reset_password_token", unique: true
   end
 
+  create_table "rentals", force: :cascade do |t|
+    t.datetime "rental_at", null: false
+    t.integer "total_payment", null: false
+    t.integer "payment_method", null: false
+    t.integer "status", null: false
+    t.boolean "is_canceled", null: false
+    t.integer "rental_detail_id", null: false
+    t.integer "customer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_rentals_on_customer_id"
+    t.index ["rental_detail_id"], name: "index_rentals_on_rental_detail_id"
+  end
+
   add_foreign_key "parking_sizes", "car_models"
   add_foreign_key "parking_sizes", "parkings"
+  add_foreign_key "rentals", "customers"
+  add_foreign_key "rentals", "rental_details"
 end

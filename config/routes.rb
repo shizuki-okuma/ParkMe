@@ -28,8 +28,8 @@ Rails.application.routes.draw do
       end
     end
     
-    resources :parkings, only:[:index, :show, :search] 
-    
+    resources :parkings, only:[:index, :show] 
+    resources :rentals, only:[:index, :show, :new, :create, :thanks, :confirm] 
   end
 
   # 管理者用

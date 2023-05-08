@@ -7,7 +7,9 @@
     <tbody>
       <% @parkings.each do |parking| %>
         <tr>
+          <%=link_to new_rental_path(parking.id) do %>
           <td><%= parking.name %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
