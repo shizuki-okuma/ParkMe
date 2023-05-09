@@ -1,2 +1,13 @@
-<h1>Customers::Parkings#index</h1>
-<p>Find me in app/views/customers/parkings/index.html.erb</p>
+<h1>駐車場一覧</h1>
+<!--検索フォーム-->
+<div><%= render 'searches/search' %></div>
+<table>
+  <% @parkings.each do |parking| %>
+    <tr>
+      <td><%= link_to customers_parking_path(parking.id) do %>
+        <%= parking.name %>
+      <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

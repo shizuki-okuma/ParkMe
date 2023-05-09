@@ -13,17 +13,17 @@
         </thead>
         
         <tbody>
-          <% @renrals.each do |rental| %>
+          <% @customers.each do |customer| %>
             <tr>
               <td>
-                <%= rental.parking.name %>
+                <%= customer.parking.name %>
               </td>
-              <td><%= rental.parking.with_tax_price %>円</td>
-              <td><%= rental.parking_amount %>台</td>
-              <td><%= rental.subtotal %>円</td>
+              <td><%= customer.parking.with_tax_price %>円</td>
+              <td><%= customer.parking_amount %>台</td>
+              <td><%= customer.subtotal %>円</td>
             </tr>
+            <% end %>
             <% @total+=rental.subtotal %>
-          <% end %>
         </tbody>
         
       </table>
@@ -32,17 +32,17 @@
   
   <div class='row'>
     <h5>支払い方法</h5>
-    <%= @order.payment_method_i18n %>
+    <%= @rental.payment_method_i18n %>
   </div>
   
   <div class='row'>
-    <h5>お届け先</h5>
-    〒<%= @order.zip_code %>
-    <%= @order.address %>
-     <%= @order.name %>
+    <h5>ご自身の住所</h5>
+    〒<%= @rental.zip_code %>
+    <%= @rental.address %>
+     <%= @rental.name %>
   </div>
   
-    <%= form_with model:@rental ,url:rentals_path, method: :post do |f| %>
+    <%= form_with model:@rental ,url: thanks_rentals_path, method: :post do |f| %>
       <%= f.hidden_field :zip_code %>
       <%= f.hidden_field :address %>
       <%= f.hidden_field :name %>
@@ -50,7 +50,7 @@
       <%= f.hidden_field :payment_method %>
       
   <div class='row'>
-      <%= f.submit "注文を確定する", thanks_rentals_path, class:'btn btn-success' %>
+      <%= f.submit "注文を確定する", class:'btn btn-success' %>
       <% end %>
   </div>
 

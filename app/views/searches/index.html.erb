@@ -8,7 +8,7 @@
       <% @parkings.each do |parking| %>
         <tr>
           <td>
-          <%= link_to rental_path(parking.rental.id) do %>
+          <%= link_to customers_parking_path(parking.rental.id) do %>
           <%= parking.name %>
           <% end %>
           </td>

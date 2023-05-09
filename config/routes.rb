@@ -31,11 +31,8 @@ Rails.application.routes.draw do
     resources :rentals, only:[ :index, :show, :new, :create] do
     collection do
       get 'thanks'
-    end
-    
-    member do
       post 'confirm'
-      end
+    end
     end
   end
 

@@ -6,7 +6,7 @@
     </div>
     </div>
     <div class="row">
-      <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
+      <%= form_with model: @rental, url: confirm_customers_rentals_path, method: :post do |f| %>
         <div class="mt-2">
           <div>
             <h5><strong>支払い方法</strong></h5>
@@ -19,7 +19,7 @@
         </div>
         
         <div>
-            <h5><strong>ご自身の住所確認</strong></h5>
+            <h5><strong>ご自身の住所</strong></h5>
         </div>
         <div class="ml-4">
           <table>
@@ -27,7 +27,7 @@
               <td><%= @customer.last_name %> <%= @customer.first_name %></td><br>
             〒<td><%= @customer.zip_code %></td>
               <td><%= @customer.address %></td>
-              <td><%= link_to "編集する", customers_edit_path(@customer), class: 'btn btn-success' %></td>
+              <td><%= link_to "編集する", edit_customers_customer_path(@customer), class: 'btn btn-success' %></td>
             </tr>
           </table>
         </div>
@@ -35,7 +35,7 @@
   </div>
   <div class="text-center mt-4 mb-5">
   <!--注文情報確認画面へ-->
-    <%= f.submit "確認画面へ進む", confirm_rental_path, class: "btn btn-primary"%>
+    <%= f.submit "確認画面へ進む", class: "btn btn-primary"%>
   </div>
     <% end %>
 </div>

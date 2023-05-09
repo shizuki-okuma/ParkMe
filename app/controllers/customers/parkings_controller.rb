@@ -5,5 +5,6 @@ class Customers::ParkingsController < ApplicationController
   end
 
   def index
+    @parkings = Parking.all
   end
 end

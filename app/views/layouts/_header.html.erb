@@ -6,6 +6,7 @@
         <%#= link_to image_tag('logo.jpg', width: '40%', height: '40%'), root_path, class:"ml-5" %></br>
         <span class="text-center ml-5">ParkMe</span>
       </div>
+      
      <!--customerがサイン済みかどうか判定する-->
      <% if customer_signed_in? %>
         <p>ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>様</p>

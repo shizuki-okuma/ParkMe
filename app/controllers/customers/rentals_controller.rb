@@ -1,11 +1,14 @@
 class Customers::RentalsController < ApplicationController
   def new
     @rental = Rental.new
+    @customer = current_customer
   end
 
   def confirm
     @rental = Rental.new(rental_params)
+    @customer = current_customer
     @total = 0
+    
   end
 
   def thanks
@@ -42,6 +45,6 @@ class Customers::RentalsController < ApplicationController
 private
 
   def rental_params
-    params.require(:order).permit(:customer_id, :total_payment, :payment_method, :name, :address, :zip_code, :status)
+    params.require(:rental).permit(:customer_id, :parking_id, :rental_at, :is_canceled, :total_payment, :payment_method, :name, :address, :zip_code, :status)
   end
 end
