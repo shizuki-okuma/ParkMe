@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get "search" => "searches#index"
   
-  scope module: :providers do
+  namespace :providers do
     
     resources :providers, only:[:edit, :update, :destroy] do
       collection do
@@ -13,11 +13,11 @@ Rails.application.routes.draw do
         get 'quit'
       end
     end  
-    resources :parkings, only:[ :show, :new, :create, :edit, :update]
+    resources :parkings, only:[:show, :new, :create, :edit, :update]
   end
   
-  scope module: :customers do
-    
+  namespace :customers do
+    resources :parkings, only:[:index, :show]
     resources :customers, only:[:edit, :update, :destroy] do
     collection do
       get 'my_page' => 'customers#show'
@@ -28,8 +28,7 @@ Rails.application.routes.draw do
       end
     end
     
-    resources :parkings, only:[:index, :show] 
-    resources :rentals, only:[:index, :show, :new, :create] do
+    resources :rentals, only:[ :index, :show, :new, :create] do
     collection do
       get 'thanks'
     end
