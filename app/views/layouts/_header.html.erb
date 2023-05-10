@@ -3,8 +3,13 @@
     <div class="container">
       <div>
         <!--image_tagで画像を表示、root_pathでtopページで遷移-->
-        <%#= link_to image_tag('logo.jpg', width: '40%', height: '40%'), root_path, class:"ml-5" %></br>
-        <span class="text-center ml-5">ParkMe</span>
+        <%= link_to image_tag('logo.jpg', width: '10%', height: '10%'), root_path, class:"ml-5" %></br>
+    <h1>
+    <a href="">
+      <img src="image/logo.jpg" alt="ParkMe">
+    </a>
+    </h1>
+        
       </div>
       
      <!--customerがサイン済みかどうか判定する-->
@@ -76,4 +81,9 @@
       </div>
     </div>
   </nav>
+  <div class="container">
+      <div class="row">
+    <%= image_tag 'city.jpg' %>
+      </div>
+    </div>
 </header>
