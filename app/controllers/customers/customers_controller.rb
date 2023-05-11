@@ -1,6 +1,7 @@
 class Customers::CustomersController < ApplicationController
   def show
     @customer = Customer.find(current_customer.id)
+    @rentals = current_customer.rentals
   end
 
   def edit

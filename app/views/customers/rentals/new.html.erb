@@ -5,9 +5,16 @@
       <h3>注文情報入力</h3>
     </div>
     </div>
+    <%= form_with model: @rental, url: confirm_customers_rentals_path(parking_id: @parking.id), method: :post do |f| %>
     <div class="row">
-      <%= form_with model: @rental, url: confirm_customers_rentals_path, method: :post do |f| %>
+      
         <div class="mt-2">
+          <div>
+            <h5><strong>レンタルする日付</strong></h5>
+          </div>
+          <div class="ml-4">
+            <%= f.date_field :rental_at, min: Time.zone.now, class: "h-12 rounded-[3px] text-[#333333] font-bold invalid:text-line-200" %>
+          </div>
           <div>
             <h5><strong>支払い方法</strong></h5>
           </div>
@@ -36,6 +43,7 @@
   <div class="text-center mt-4 mb-5">
   <!--注文情報確認画面へ-->
     <%= f.submit "確認画面へ進む", class: "btn btn-primary"%>
+
   </div>
-    <% end %>
+  <% end %>
 </div>

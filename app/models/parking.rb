@@ -21,5 +21,8 @@ class Parking < ApplicationRecord
       @parking = Parking.all
     end
   end
+  def subtotal
+    price*amount
+  end
   
 end

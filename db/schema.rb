@@ -133,7 +133,7 @@ ActiveRecord::Schema.define(version: 2023_05_10_064636) do
     t.integer "total_payment", null: false
     t.integer "payment_method", null: false
     t.integer "status", null: false
-    t.boolean "is_canceled", null: false
+    t.boolean "is_canceled", default: false, null: false
     t.integer "price", null: false
     t.integer "amount", null: false
     t.integer "customer_id", null: false

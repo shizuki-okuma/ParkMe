@@ -1,15 +1,11 @@
-<header class="shadow-sm">
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#a9a9a9;">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#FFFFFF;">
     <div class="container">
-      <div>
-        <!--image_tagで画像を表示、root_pathでtopページで遷移-->
-        <%= link_to image_tag('logo.jpg', width: '10%', height: '10%'), root_path, class:"ml-5" %></br>
-    <h1>
-    <a href="">
-      <img src="image/logo.jpg" alt="ParkMe">
-    </a>
-    </h1>
-        
+      <!--image_tagで画像を表示、root_pathでtopページで遷移-->
+      <%= link_to image_tag('logo.jpg', width: '10%', height: '10%'), root_path, class:"ml-5" %></br>
+      <h1>
+      ParkMe
+      </h1>
+    <div>
       </div>
       
      <!--customerがサイン済みかどうか判定する-->
@@ -25,7 +21,7 @@
         ようこそ、ゲスト様
       <% end %>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" style="background-color:#FFCC00;" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -43,16 +39,16 @@
 
         <% elsif admin_signed_in? %>
           <li class="mr-3">
-            <%#= link_to "駐車場一覧", admin_parking_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+            <%= link_to "駐車場一覧", admins_parkings_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
           </li>
           <li class="mr-3">
-            <%#= link_to "会員一覧", admin_customers_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+            <%= link_to "会員一覧", admins_customers_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
           </li>
           <li class="mr-3">
-            <%#= link_to "注文履歴一覧", admin_root_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+            <%= link_to "レンタル履歴一覧", admins_rentals_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
           </li>
           <li class="mr-3">
-            <%#= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
           </li>
           
           <% elsif provider_signed_in? %>
@@ -81,9 +77,3 @@
       </div>
     </div>
   </nav>
-  <div class="container">
-      <div class="row">
-    <%= image_tag 'city.jpg' %>
-      </div>
-    </div>
-</header>

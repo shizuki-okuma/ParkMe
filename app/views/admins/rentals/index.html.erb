@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>レンタル履歴一覧</h2>
+  <div class="row">
+    <div class="col-1"></div>
+
+    <div class="col-10">
+      <table class="table">
+        <thead>
+          <tr class="table-active">
+            <th>レンタルID</th>
+            <th>駐車場の名前</th>
+            
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @rentals.each do |rental| %>
+          <tr>
+            <td><%= rental.id %></td>
+            <td><%= link_to rental_at, rental_path(customer) %></td>
+            <td><%= rental.parking.name %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

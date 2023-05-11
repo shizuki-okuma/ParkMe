@@ -9,21 +9,19 @@
       <table class='table table-bordered'>
         
         <thead class="thead-light">
-          <tr><th>駐車場名</th><th>単価（税込）</th><th>台数</th><th>小計</th></tr>
+          <tr><th>日付</th><th>駐車場名</th><th>単価（税込）</th><th>台数</th><th>小計</th></tr>
         </thead>
         
         <tbody>
-          <% @customers.each do |customer| %>
             <tr>
-              <td>
-                <%= customer.parking.name %>
-              </td>
-              <td><%= customer.parking.with_tax_price %>円</td>
-              <td><%= customer.parking_amount %>台</td>
-              <td><%= customer.subtotal %>円</td>
+              <td><%= @rental.rental_at %></td>
+              <td><%= @parking.name %></td>
+              <td><%= @parking.with_tax_price %>円</td>
+              <td><%= @parking.amount %>台</td>
+              <td><%= @parking.subtotal %>円</td>
             </tr>
-            <% end %>
-            <% @total+=rental.subtotal %>
+            <% @total=@parking.subtotal %>
+            
         </tbody>
         
       </table>
@@ -37,19 +35,18 @@
   
   <div class='row'>
     <h5>ご自身の住所</h5>
-    〒<%= @rental.zip_code %>
-    <%= @rental.address %>
-     <%= @rental.name %>
+    〒<%= @customer.zip_code %>
+    <%= @customer.address %>
+     <%= @customer.last_name %>
   </div>
-  
-    <%= form_with model:@rental ,url: thanks_rentals_path, method: :post do |f| %>
-      <%= f.hidden_field :zip_code %>
-      <%= f.hidden_field :address %>
-      <%= f.hidden_field :name %>
-      <%= f.hidden_field :total_payment, value: @total+@rental.shopping_cost %>
-      <%= f.hidden_field :payment_method %>
-      
   <div class='row'>
+    <%= form_with model:@rental ,url: customers_rentals_path, method: :post do |f| %>
+      <%= f.hidden_field :parking_id, value: @parking.id %>
+      <%= f.hidden_field :total_payment, value: @total %>
+      <%= f.hidden_field :payment_method, value: @rental.payment_method %>
+      <%= f.hidden_field :rental_at, value: @rental.rental_at %>
+      
+  
       <%= f.submit "注文を確定する", class:'btn btn-success' %>
       <% end %>
   </div>

@@ -40,10 +40,19 @@
     </table>
   </div>
   <div class="row my-3">
-    <h3>レンタル履歴</h3>
-      <div class='col-10'>
-        <%#= link_to "一覧を見る", rentals_path, class: 'btn btn-primary' %>
-      </div>
+    <h3 >提供履歴</h3>
   </div>
+      <div class='col-10'>
+       <table class= "table table-bordered">
+         <% @rentals.each do |rental| %>
+          <tr>
+            <td><%= rental.id %></td>
+            <td><%= rental.rental_at.strftime("%Y年%-m月%-d日")%></td>
+            <td><%= @customer.last_name+@customer.first_name %></td>
+          </tr>
+        <% end %>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

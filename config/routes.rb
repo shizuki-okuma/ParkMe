@@ -1,21 +1,5 @@
 Rails.application.routes.draw do
   
-  namespace :admins do
-    get 'rentals/update'
-  end
-  namespace :admins do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/update'
-  end
-  namespace :admins do
-    get 'parkings/index'
-    get 'parkings/show'
-    get 'parkings/update'
-  end
-  namespace :admins do
-    get 'homes/top'
-  end
   root to: 'homes#top'
   get "search" => "searches#index"
   
@@ -51,7 +35,14 @@ Rails.application.routes.draw do
     end
     end
   end
-
+  
+  namespace :admins do
+    resources :rentals, only:[:index, :show, :update]
+    resources :customers, only:[:index, :show, :update]
+    resources :parkings, only:[:index, :show, :update]
+    resources :homes, only:[:top]
+  end
+  
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admins,skip: [:passwords], controllers: {

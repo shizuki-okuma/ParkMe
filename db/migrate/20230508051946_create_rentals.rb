@@ -6,7 +6,7 @@ class CreateRentals < ActiveRecord::Migration[6.1]
       t.integer :total_payment, null: false
       t.integer :payment_method, null: false
       t.integer :status, null: false
-      t.boolean :is_canceled, null: false
+      t.boolean :is_canceled, null: false, default: false
       t.integer :price, null: false
       t.integer :amount, null: false
       t.references :customer, null: false, foreign_key: true

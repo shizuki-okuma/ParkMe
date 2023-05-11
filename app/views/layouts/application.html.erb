@@ -2,41 +2,51 @@
 <html>
   <head>
     <title>ParkMe</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+      <script src="https://kit.fontawesome.com/b8df303df0.js" crossorigin="anonymous"></script>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+  
+      <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
     <body>
       <main class="mb-auto">
         <header>
           <%= render 'layouts/header' %>
         </header>
-        
+        <div class="back_image"></div>
       <%= yield %>
       
     </body>
       </main>
       <footer class="bg-dark text-white pt-5 pb-4">
-        <div class="container">
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <p>善良な市民同士で駐車場の貸し借りをするECサイト</p>
-            </div>
-            <div class="col-md-8">
-              <h6 class="text-white mt-2 mb-3">Link</h6>
-              <ul class="p-0 list-unstyled">
-                <li>
-                  <a href="" title="About" class="text-white-50">会社概要</a>
-                </li>
-                <li>
-                  <a href="" title="License informations" class="text-white-50">プライバシーポリシー</a>
-                </li>
-              </ul>
-            </div>
+        <div class="container-fluid mt-auto">
+          <!--text-centerで中央寄せ pt-3=padding topが1rem-->
+          <div class="text-center pt-3">
+            <!--twitterのtopページurlとアイコン-->
+            <%= link_to "https://twitter.com/", class: "text-decoration-none" do %>
+              <!--twitterのアイコン　mutedカラー-->
+              <i class="fab fa-twitter-square h2 text-muted"></i>
+            <% end %>
+        
+            <%= link_to "https://www.facebook.com/", class: "text-decoration-none" do %>
+              <!--facebookのアイコン　mutedカラー-->
+              <i class="fab fa-facebook h2 text-muted"></i>
+            <% end %>
+        
+            <%= link_to "https://www.instagram.com/", class: "text-decoration-none" do %>
+              <!--instagramのアイコン　mutedカラー-->
+              <i class="fab fa-instagram-square h2 text-muted"></i>
+            <% end %>
+        
+            <%= link_to "https://line.me/ja/", class: "text-decoration-none" do %>
+              <!--lineのアイコン　mutedカラー-->
+              <i class="fab fa-line h2 text-muted"></i>
+            <% end %>
           </div>
+          <!--text-centerで中央寄せ　mutedカラー-->
+          <p class="text-center text-muted">©Copyright 2023 ParkMe ALL Rights reserved.</p>
         </div>
       </footer>
     </body>
