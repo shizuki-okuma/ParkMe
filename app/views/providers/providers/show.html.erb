@@ -4,9 +4,11 @@
   <div class="row my-4">
     <h3>登録情報</h3>
     
+    <% if @provider.email != 'guest@example.com' %>
     <div class='col-10'>
-      <%= link_to "編集する", edit_provider_path(@provider), class: 'btn btn-success' %>
+      <%= link_to "編集する", edit_providers_provider_path(@provider), class: 'btn btn-success' %>
     </div>
+    <% end %>
   </div>
   
    <div class='col-10'>
@@ -65,7 +67,7 @@
               <td><%= parking.zip_code %></td>
               <td><%= parking.address %></td>
               <td><%= parking.is_active %></td>
-              <td><%= link_to "詳細を見る", parking_path(parking), class: 'btn btn-primary' %></td>
+              <td><%= link_to "詳細を見る", providers_parking_path(parking), class: 'btn btn-primary' %></td>
             </tr>
           </tbody>
         <% end %>

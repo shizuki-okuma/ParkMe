@@ -1,13 +1,40 @@
-<h1>駐車場一覧</h1>
-<!--検索フォーム-->
-<div><%= render 'searches/search' %></div>
-<table>
-  <% @parkings.each do |parking| %>
-    <tr>
-      <td><%= link_to admincustomers_parking_path(parking.id) do %>
-        <%= parking.name %>
-      <% end %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<div class="container">
+  <h2>駐車場一覧</h2>
+  <!--検索フォーム-->
+  <div><%= render 'searches/search' %></div>
+  <div class="row">
+    <div class="col-1"></div>
+
+    <div class="col-10">
+      <table class="table">
+        <thead>
+          <tr class="table-active">
+            <th>駐車場ID</th>
+            <th>駐車場名</th>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @parkings.each do |parking| %>
+          <tr>
+            <td><%= parking.id %></td>
+            <td><%= link_to parking.name, providers_parking_path(parking) %></td>
+            <td><%= parking.zip_code %></td>
+            <td><%= parking.address %></td>
+            <td>
+              <%# if customer.is_deleted %>
+              <!--  <span class="text-secondary font-weight-bold">退会</span>-->
+              <%# else %>
+              <!--  <span class="text-success font-weight-bold">有効</span>-->
+              <%# end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

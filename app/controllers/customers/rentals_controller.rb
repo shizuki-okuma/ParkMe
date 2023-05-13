@@ -35,8 +35,8 @@ class Customers::RentalsController < ApplicationController
   end
 
   def show
-    @rental = Rental.find(params[:id])
-    
+    @rental = current_customer.rentals.find(params[:id])
+    @parking = @rental.parking
   end
   
 private

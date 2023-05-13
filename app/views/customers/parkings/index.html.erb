@@ -4,7 +4,7 @@
 <table>
   <% @parkings.each do |parking| %>
     <tr>
-      <td><%= link_to customers_parking_path(parking.id) do %>
+      <td><%= link_to providers_parking_path(parking.id) do %>
         <%= parking.name %>
       <% end %>
       </td>

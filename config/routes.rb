@@ -51,15 +51,20 @@ Rails.application.routes.draw do
   }
   # レンタル顧客用
   # URL /customers/sign_in ...
-  devise_for :customers, skip: [:passwords] ,controllers: {
-    registrations: "customers/registrations",
-    sessions: 'customers/sessions'
-  }
+  devise_scope :customer do
+    post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
+    devise_for :customers, skip: [:passwords] ,controllers: {
+      registrations: "customers/registrations",
+      sessions: 'customers/sessions'
+    }
+  end
    # 提供顧客用
-  # URL /customers/sign_in ...
+  # URL /providers/sign_in ...
+  devise_scope :customer do
+    post 'providers/guest_sign_in', to: 'providers/sessions#guest_sign_in'
   devise_for :providers, skip: [:passwords] ,controllers: {
     registrations: "providers/registrations",
     sessions: 'providers/sessions'
   }
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  end
 end

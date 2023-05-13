@@ -4,9 +4,11 @@
   <div class="row my-4">
     <h3>登録情報</h3>
     
+    <% if current_customer.email != 'guest@example.com' %>
     <div class='col-10'>
-      <%= link_to "編集する", edit_customers_customer_path(@customer), class: 'btn btn-success' %>
+      <%= link_to "編集する", edit_customers_customer_path(current_customer), class: 'btn btn-success' %>
     </div>
+    <% end %>
   </div>
   
    <div class='col-10'>
@@ -40,7 +42,7 @@
     </table>
   </div>
   <div class="row my-3">
-    <h3 >提供履歴</h3>
+    <h3 >レンタル履歴</h3>
   </div>
       <div class='col-10'>
        <table class= "table table-bordered">
@@ -48,7 +50,8 @@
           <tr>
             <td><%= rental.id %></td>
             <td><%= rental.rental_at.strftime("%Y年%-m月%-d日")%></td>
-            <td><%= @customer.last_name+@customer.first_name %></td>
+            <td><%= rental.parking.name %></td>
+            <td><%= link_to "詳細", customers_parking_path(rental.id), class: 'btn btn-success' %></td>
           </tr>
         <% end %>
         </table>

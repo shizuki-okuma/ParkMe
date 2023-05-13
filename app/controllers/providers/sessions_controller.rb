@@ -1,6 +1,9 @@
-# frozen_string_literal: true
-
 class Providers::SessionsController < Devise::SessionsController
+  def guest_sign_in
+    provider = Provider.guest
+    sign_in provider
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

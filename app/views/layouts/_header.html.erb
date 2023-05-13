@@ -56,21 +56,27 @@
             <%= link_to "マイページ", my_page_providers_providers_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
           </li>
           <li class="mr-3">
+            <%= link_to "駐車場登録", new_providers_parking_path, method: :delete,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+          </li>
+          <li class="mr-3">
             <%= link_to "ログアウト", destroy_provider_session_path, method: :delete,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
           </li>
           
         <% else %>
           <li class="mr-3">
-            <%#= link_to "About", about_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+            <%= link_to "新規登録", new_customer_registration_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
           </li>
           <li class="mr-3">
-            <%#= link_to "駐車場一覧", customer_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+            <%= link_to "レンタル会員ゲストログイン", customers_guest_sign_in_path, method: :post,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
           </li>
           <li class="mr-3">
-            <%#= link_to "新規登録", new_customer_registration_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+            <%= link_to "提供会員ゲストログイン", providers_guest_sign_in_path, method: :post,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
           </li>
           <li class="mr-3">
-            <%#= link_to "ログイン", new_customer_session_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+            <%= link_to "提供会員ログイン", provider_session_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+          </li>
+          <li class="mr-3">
+            <%= link_to "レンタル会員ログイン", customer_session_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
           </li>
         <% end %>
         </ul>

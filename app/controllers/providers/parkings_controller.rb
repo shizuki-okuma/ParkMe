@@ -20,7 +20,7 @@ class Providers::ParkingsController < ApplicationController
   def update
     @parking = Parking.find(params[:id])
     if @parking.update(parking_params) 
-      redirect_to parking_path(@parking) #編集保存成功時showページへ移動
+      redirect_to providers_parking_path(@parking) #編集保存成功時showページへ移動
     else
       render :edit #編集保存成功時editページへ移動
     end

@@ -8,7 +8,8 @@
         <thead>
           <tr class="table-active">
             <th>レンタルID</th>
-            <th>駐車場の名前</th>
+            <th>レンタル日</th>
+            <th>駐車場名</th>
             
           </tr>
         </thead>
@@ -17,7 +18,10 @@
           <% @rentals.each do |rental| %>
           <tr>
             <td><%= rental.id %></td>
-            <td><%= link_to rental_at, rental_path(customer) %></td>
+            <td><%= link_to  customers_rental_path(rental) do %>
+            <%= rental.rental_at.strftime("%Y年%-m月%-d日") %>
+            <% end %>
+            </td>
             <td><%= rental.parking.name %></td>
           </tr>
           <% end %>
