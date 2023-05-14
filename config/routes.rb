@@ -33,6 +33,10 @@ Rails.application.routes.draw do
       get 'thanks'
       post 'confirm'
     end
+    
+    member do
+      post 'cancel'
+      end
     end
   end
   

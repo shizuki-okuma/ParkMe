@@ -76,10 +76,31 @@
       </div>
   </div>
   
+  <h3>提供履歴</h3>
   <div class="row my-3">
-    <h3 >提供履歴</h3>
       <div class='col-10'>
-        <%#= link_to "一覧を見る", rentals_path, class: 'btn btn-primary' %>
+       <table class= "table table-bordered">
+         <thead>
+          <tr class="table-active">
+            <th>レンタルID</th>
+            <th>レンタル年月日</th>
+            <th>レンタル者氏名</th>
+            <th>レンタル内容詳細</th>
+          </tr>
+        </thead>
+        <tbody>
+         <% @all_parkings.each do |parking| %>
+           <% parking.rentals.each do |rental| %>
+            <tr>
+              <td><%= rental.id %></td>
+              <td><%= rental.rental_at.strftime("%Y年%-m月%-d日")%></td>
+              <td><%= rental.customer.last_name + rental.customer.first_name %></td>
+              <td><%= link_to "詳細", customers_rental_path(rental.id), class: 'btn btn-success' %></td>
+            </tr>
+           <% end %> 
+        <% end %>
+        </tbody>
+        </table>
       </div>
   </div>
   

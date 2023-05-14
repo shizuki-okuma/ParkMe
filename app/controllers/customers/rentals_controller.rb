@@ -35,10 +35,16 @@ class Customers::RentalsController < ApplicationController
   end
 
   def show
-    @rental = current_customer.rentals.find(params[:id])
+    @rental = Rental.find(params[:id])
     @parking = @rental.parking
   end
   
+  def cancel
+    @rental = Rental.find(params[:id])
+    @rental.status = :cancel
+    @rental.save!
+    redirect_to  my_page_customers_customers_path, notice:'キャンセルしました'
+  end
 private
 
   def rental_params

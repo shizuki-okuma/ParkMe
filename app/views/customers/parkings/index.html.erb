@@ -1,13 +1,19 @@
-<h1>駐車場一覧</h1>
-<!--検索フォーム-->
-<div><%= render 'searches/search' %></div>
-<table>
-  <% @parkings.each do |parking| %>
-    <tr>
-      <td><%= link_to providers_parking_path(parking.id) do %>
-        <%= parking.name %>
-      <% end %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-9 mx-auto">
+      <h1>駐車場一覧</h1>
+      <!--検索フォーム-->
+      <div><%= render 'searches/search' %></div>
+      <% @parkings.each do |parking| %>
+        <table class="table table-borderless">
+          <tr>
+            <td><%= link_to providers_parking_path(parking.id) do %>
+              <%= parking.name %>
+            <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

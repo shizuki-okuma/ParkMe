@@ -3,8 +3,9 @@ class Providers::ProvidersController < ApplicationController
   def show
     @provider = Provider.find(current_provider.id)
     @parkings = Parking.where(provider_id: current_provider.id) #登録した駐車場のみを表示
+    @all_parkings = Parking.where(id: @parkings.pluck(:id)).joins(:rentals).order(:rental_id).uniq
   end
-
+  
   def edit
     @provider =Provider.find(current_provider.id)
   end
@@ -33,6 +34,7 @@ class Providers::ProvidersController < ApplicationController
   def provider_params
     params.require(:provider).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :zip_code, :address, :phone_number, :is_deleted)
   end
+  
   def ensure_guest_provider
     @provider = Provider.find(params[:id])
     if @provider.email == 'guest@example.com'
