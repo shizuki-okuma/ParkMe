@@ -10,7 +10,7 @@
             <th>会員ID</th>
             <th>氏名</th>
             <th>メールアドレス</th>
-            <th>ステータス</th>
+            <th>ステータス</th><th></th>
           </tr>
         </thead>
 
@@ -18,14 +18,10 @@
           <% @customers.each do |customer| %>
           <tr>
             <td><%= customer.id %></td>
-            <td><%= link_to customer.last_name + customer.first_name, admins_parkings_path %></td>
+            <td><%= link_to customer.last_name + customer.first_name, admins_customer_path(customer.id) %></td>
             <td><%= customer.email %></td>
-            <td>
-              <% if customer.is_deleted %>
-                <span class="text-secondary font-weight-bold">退会</span>
-              <% else %>
-                <span class="text-success font-weight-bold">有効</span>
-              <% end %>
+            <td id="status_buttons_<%= customer.id %>">
+            <%= render 'admins/customers/statuses', customer: customer %>
             </td>
           </tr>
           <% end %>

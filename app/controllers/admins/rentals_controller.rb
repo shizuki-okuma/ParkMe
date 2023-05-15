@@ -7,7 +7,8 @@ class Admins::RentalsController < ApplicationController
   end
   
   def show
-    @parking = current_customer.parking.find(params[:id])
+    @rental = Rental.find(params[:id])
+    @parking = @rental.parking
   end
   def update
     @customer = Customer.find(params[:id])

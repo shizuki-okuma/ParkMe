@@ -40,6 +40,7 @@
           　<%= f.label :is_deleted, "無効", {value: :true, style: "display: inline-block;"} %>
           　<%= f.radio_button :is_deleted, false %>
           　<%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
+          　<%= link_to "退会する", quit_providers_provider_path, class: 'btn btn-danger' %>
           </div>
 
           <div class="actions  col-9 col-offset-4">

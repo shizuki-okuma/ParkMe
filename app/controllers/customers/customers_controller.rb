@@ -22,7 +22,7 @@ class Customers::CustomersController < ApplicationController
   def quit
   end
 
-  def destroy
+  def withdraw
     @customer = current_customer
     @customer.update(is_deleted: false)
      reset_session
@@ -41,4 +41,6 @@ class Customers::CustomersController < ApplicationController
       redirect_to my_page_customers_customers_path, notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
+  
+  
 end

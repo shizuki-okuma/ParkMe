@@ -57,3 +57,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise' #会員ログイン、新規登録するため導入
 gem "enum_help" #enumでステータス、車種選択するため導入
 gem "font-awesome-rails" #fontawe
+gem 'jquery-rails'

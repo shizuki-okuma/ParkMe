@@ -34,7 +34,7 @@
         </tr>
         <tr>
           <th>会員ステータス</th>
-          <% if @customer.is_active == true %>
+          <% if @customer.is_deleted == false %>
             <td><p class="text-success">有効</p></td>
           <% elsif %>
             <td><p class="text-secondary">退会</p></td>
@@ -42,7 +42,7 @@
         </tr>
       </tbody>
        <tr>
-       <td><%= link_to "レンタル履歴一覧を見る", admin_root_path(@customer.id), class: "btn btn-secondary"%></td>
+       <td><%= link_to "レンタル履歴一覧を見る", admins_rentals_path(@customer.id), class: "btn btn-success" %></td>
       </table>
     </div>
   </div>

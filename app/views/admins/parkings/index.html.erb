@@ -24,12 +24,8 @@
             <td><%= link_to parking.name, providers_parking_path(parking) %></td>
             <td><%= parking.zip_code %></td>
             <td><%= parking.address %></td>
-            <td>
-              <%# if customer.is_deleted %>
-              <!--  <span class="text-secondary font-weight-bold">退会</span>-->
-              <%# else %>
-              <!--  <span class="text-success font-weight-bold">有効</span>-->
-              <%# end %>
+            <td id="parking_status_buttons_<%= parking.id %>">
+            <%= render 'admins/parkings/parking_statuses', parking: parking %>
             </td>
           </tr>
           <% end %>

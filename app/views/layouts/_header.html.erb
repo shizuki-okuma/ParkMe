@@ -1,85 +1,79 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#FFFFFF;">
-    <div class="container">
-      <!--image_tagで画像を表示、root_pathでtopページで遷移-->
-      <%= link_to image_tag('logo.jpg', width: '10%', height: '10%'), root_path, class:"ml-5" %></br>
-      <h1>
-      ParkMe
-      </h1>
-    <div>
-      </div>
-      
-     <!--customerがサイン済みかどうか判定する-->
-     <% if customer_signed_in? %>
-        <p>ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>様</p>
-      <!--条件式1が偽で条件式2が真の時に実行する-->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#FFFFFF;">
+  <p><%= link_to image_tag('logo.jpg', width: '10%', height: '10%'), root_path, class:"ml-5" %></br></p>
+  <h1>ParkMe</h1>
+    <% if customer_signed_in? %>
+      <p>ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>様</p>
+    <% elsif admin_signed_in? %>
+      <p>管理者ログイン中</p>
+    <% elsif provider_signed_in? %>
+      <p>ようこそ、<%= current_provider.last_name %><%= current_provider.first_name %>様</p>
+    <% else %>
+      <p>ようこそ、ゲスト様</p>
+    <% end %>
+  
+    <button class="navbar-toggler" style="background-color:#FFCC00;" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="d-flex flex-column flex-md-row">
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <% if customer_signed_in? %>
+        <li class="mr-3">
+          <%= link_to "マイページ", my_page_customers_customers_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        <li class="mr-3">
+          <%= link_to "駐車場一覧", customers_parkings_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        <li class="mr-3">
+          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+  
       <% elsif admin_signed_in? %>
-        管理者ログイン中
-      <!--全ての条件式が偽の時に実行する処理-->
-      <% elsif provider_signed_in? %>
-        <p>ようこそ、<%= current_provider.last_name %><%= current_provider.first_name %>様</p>
+        <li class="mr-3">
+          <%= link_to "駐車場一覧", admins_parkings_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        <li class="mr-3">
+          <%= link_to "会員一覧", admins_customers_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        <li class="mr-3">
+          <%= link_to "レンタル履歴一覧", admins_rentals_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        <li class="mr-3">
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        
+        <% elsif provider_signed_in? %>
+        <li class="mr-3">
+          <%= link_to "マイページ", my_page_providers_providers_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        <li class="mr-3">
+          <%= link_to "駐車場登録", new_providers_parking_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        <li class="mr-3">
+          <%= link_to "ログアウト", destroy_provider_session_path, method: :delete,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        
       <% else %>
-        ようこそ、ゲスト様
+        <li class="mr-3">
+          <%= link_to "新規登録", new_customer_registration_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        <li class="mr-3">
+          <%= link_to "レンタル会員ゲストログイン", customers_guest_sign_in_path, method: :post,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        <li class="mr-3">
+          <%= link_to "提供会員ゲストログイン", providers_guest_sign_in_path, method: :post,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        <li class="mr-3">
+          <%= link_to "提供会員ログイン", provider_session_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        <li class="mr-3">
+          <%= link_to "レンタル会員ログイン", customer_session_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
       <% end %>
-
-      <button class="navbar-toggler" style="background-color:#FFCC00;" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-          <% if customer_signed_in? %>
-          <li class="mr-3">
-            <%= link_to "マイページ", my_page_customers_customers_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          <li class="mr-3">
-            <%= link_to "駐車場一覧", customers_parkings_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          <li class="mr-3">
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-
-        <% elsif admin_signed_in? %>
-          <li class="mr-3">
-            <%= link_to "駐車場一覧", admins_parkings_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          <li class="mr-3">
-            <%= link_to "会員一覧", admins_customers_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          <li class="mr-3">
-            <%= link_to "レンタル履歴一覧", admins_rentals_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          <li class="mr-3">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          
-          <% elsif provider_signed_in? %>
-          <li class="mr-3">
-            <%= link_to "マイページ", my_page_providers_providers_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          <li class="mr-3">
-            <%= link_to "駐車場登録", new_providers_parking_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          <li class="mr-3">
-            <%= link_to "ログアウト", destroy_provider_session_path, method: :delete,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          
-        <% else %>
-          <li class="mr-3">
-            <%= link_to "新規登録", new_customer_registration_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          <li class="mr-3">
-            <%= link_to "レンタル会員ゲストログイン", customers_guest_sign_in_path, method: :post,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          <li class="mr-3">
-            <%= link_to "提供会員ゲストログイン", providers_guest_sign_in_path, method: :post,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          <li class="mr-3">
-            <%= link_to "提供会員ログイン", provider_session_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          <li class="mr-3">
-            <%= link_to "レンタル会員ログイン", customer_session_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-        <% end %>
-        </ul>
+      </ul>
+      </div>
       </div>
     </div>
   </nav>
+</header>

@@ -27,4 +27,11 @@ class Providers::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  def provider_state
+    @provider = Provider.find_by(email: params[:provider][:email])
+    return if !@provider
+    if @provider.present? && @provider.valid_password?(params[:provider][:password])
+      redirect_to new_provider_registration_path
+    end
+  end
 end
