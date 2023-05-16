@@ -1,61 +1,60 @@
-<div class="container my-5">
+<div class="container sm-mt-5 mb-5">
   <div class="row">
-    
-    <div class="col-md-9 mx-auto">
-      <h4>レンタル詳細</h4>
-    </div>
-    
+    <h3 class="col-sm-mb-4"><strong>レンタル詳細</strong></h3>
   </div>
   
-  <div class="row mt-5">
-    <div class="col-md-7" style="text-left">
-      <table class="table table-borderless">
-        <tbody>
-          <tr>
-            <th style="width: 30%">駐車場名</th>
-            <td style="width: 70%"><%= @parking.name %></td>
-          </tr>
-          
-          <tr>
-            <th style="width: 30%">郵便番号</th>
-            <td style="width: 70%"><%= @parking.zip_code %></td>
-          </tr>
-          
-          <tr>
-            <th style="width: 30%">住所</th>
-            <td style="width: 70%"><%= @parking.address %></td>
-          </tr>
-          
-          <tr>
-            <th style="width: 30%">台数</th>
-            <td style="width: 70%"><%= @parking.amount %></td>
-          </tr>
-          
-          <tr>
-            <th style="width: 30%">商品説明 </th>
-            <td style="width: 70%"><%= @parking.description %></td>
-          </tr>
-          
-          <tr>
-            <th style="width: 30%">車種</th>
-            <td style="width: 70%">
-              <% @parking.car_models.each do |car_model| %>
-              <%= car_model.name %>
-              <% end %>
-            </td>
-          </tr>
-          
-           <tr>
-            <th style="width: 30%"> 税込価格<br>(税抜価格)</th>
-             <td style="width: 60%"><%= @parking.with_tax_price.to_s(:delimited) %>(<%= @parking.price.to_s(:delimited) %>)円
-          </tr>
-          
-          <tr>
-            <th style="width: 30%">販売ステータス</th>
-            <td style="width: 70%"><%= @parking.is_active %></td>
-          </tr>
-          
-        </tbody>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <table class= "table table-bordered">
+          <thead class="thead-light">
+          <tbody>
+            <tr>
+              <th style="width: 30%">駐車場名</th>
+              <td style="width: 70%"><%= @parking.name %></td>
+            </tr>
+            
+            <tr>
+              <th style="width: 30%">郵便番号</th>
+              <td style="width: 70%"><%= @parking.zip_code %></td>
+            </tr>
+            
+            <tr>
+              <th style="width: 30%">住所</th>
+              <td style="width: 70%"><%= @parking.address %></td>
+            </tr>
+            
+            <tr>
+              <th style="width: 30%">台数</th>
+              <td style="width: 70%"><%= @parking.amount %></td>
+            </tr>
+            
+            <tr>
+              <th style="width: 30%">商品説明 </th>
+              <td style="width: 70%"><%= @parking.description %></td>
+            </tr>
+            
+            <tr>
+              <th style="width: 30%">車種</th>
+              <td style="width: 70%">
+                <% @parking.car_models.each do |car_model| %>
+                <%= car_model.name %>
+                <% end %>
+              </td>
+            </tr>
+            
+             <tr>
+              <th style="width: 30%"> 税込価格<br>(税抜価格)</th>
+               <td style="width: 60%"><%= @parking.with_tax_price.to_s(:delimited) %>(<%= @parking.price.to_s(:delimited) %>)円
+            </tr>
+            
+            <tr>
+              <th style="width: 30%">販売ステータス</th>
+              <td style="width: 70%"><%= @parking.is_active %></td>
+            </tr>
+            
+          </tbody>
+        </thead>
       </table>
       <% if current_customer %>
       <div class="mx-auto mt-5">
