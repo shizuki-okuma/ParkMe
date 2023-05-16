@@ -1,7 +1,8 @@
 class Customers::ParkingsController < ApplicationController
   def show
-    @rental = current_customer.rentals.find(params[:id])
-    @parking = @rental.parking
+    @parking = Parking.find(params[:id])
+    # @rental = current_customer.rentals.find(params[:id])
+    # @parking = @rental.parking
   end
 
   def index

@@ -39,10 +39,9 @@
           　<%= f.radio_button :is_deleted, false %>
           　<%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
           </div>
-        
+      
           <div class="actions col-12">
             <%= f.submit '変更を保存する' ,class: "btn btn-success" %>
-            <td></td>
             <%= link_to "退会する", quit_customers_customer_path, class: 'btn btn-danger' %>
           </div>
         <% end %>
