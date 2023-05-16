@@ -1,1 +1,2 @@
 $('#status_buttons_<%= @customer.id %>').html("<%= j(render "admins/customers/statuses", customer: @customer) %>");
+$('#flash_message').html("<%= j(render "customers/shared/flash_message") %>");

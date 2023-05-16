@@ -5,8 +5,7 @@ class Parking < ApplicationRecord
   validates :amount, presence: true
   validates :description, presence: true
   validates :price, presence: true
-  validates :is_active, presence: true
-  
+
   has_many :parking_sizes, dependent: :destroy
   has_many :car_models, through: :parking_sizes
   has_many :rentals, dependent: :destroy

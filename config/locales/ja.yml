@@ -8,3 +8,7 @@ ja: # 日本語の設定を行う
       rentaled: "レンタル済み"
       rental: "レンタル中"
       cancel: "キャンセル"
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました: %{errors}"

@@ -12,7 +12,6 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, presence: true
   validates :email, presence: true
-  validates :is_deleted, presence: true
   
   has_many :rentals, dependent: :destroy
   has_many :parkings, through: :rentals

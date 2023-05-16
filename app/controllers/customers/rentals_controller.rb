@@ -43,7 +43,7 @@ class Customers::RentalsController < ApplicationController
     @rental = Rental.find(params[:id])
     @rental.status = :cancel
     @rental.save!
-    redirect_to  my_page_customers_customers_path, notice:'キャンセルしました'
+    redirect_to  my_page_customers_customers_path, notice:'キャンセルしました。'
   end
 private
 

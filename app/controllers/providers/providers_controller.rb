@@ -13,8 +13,9 @@ class Providers::ProvidersController < ApplicationController
   def update
     @provider = Provider.find(current_provider.id)
     if @provider.update(provider_params)
-      redirect_to '/providers/providers/my_page'
+      redirect_to '/providers/providers/my_page', success: "変更を完了しました。"
     else
+      flash.now[:alert] = "変更ができませんでした。"
       render :edit
     end
   end

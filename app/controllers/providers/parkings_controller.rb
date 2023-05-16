@@ -7,9 +7,9 @@ class Providers::ParkingsController < ApplicationController
     @parking = Parking.new(parking_params) # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する
     @parking.provider_id = current_provider.id
     if @parking.save
-      redirect_to parking_path(@parking)#保存成功時showページへ移動
+      redirect_to parking_path(@parking), success: "登録を完了しました。"
     else
-      render :new #保存失敗時newページへ移動
+      render :new , warning: "登録ができませんでした。"
     end
   end
 
@@ -20,9 +20,9 @@ class Providers::ParkingsController < ApplicationController
   def update
     @parking = Parking.find(params[:id])
     if @parking.update(parking_params) 
-      redirect_to providers_parking_path(@parking) #編集保存成功時showページへ移動
+      redirect_to providers_parking_path(@parking), success: "変更を完了しました。"
     else
-      render :edit #編集保存成功時editページへ移動
+      render :edit, warning: "変更できませんでした。"
     end
   end
 

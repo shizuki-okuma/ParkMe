@@ -8,14 +8,14 @@ class Customers::CustomersController < ApplicationController
 
   def edit
     @customer =Customer.find(current_customer.id)
-    
   end
 
   def update
     @customer = Customer.find(current_customer.id)
     if @customer.update(customer_params)
-      redirect_to '/customers/customers/my_page'
+      redirect_to '/customers/customers/my_page', success: "変更を完了しました。"
     else
+      flash.now[:alert] = "変更ができませんでした。"
       render :edit
     end
   end

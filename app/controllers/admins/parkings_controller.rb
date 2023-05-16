@@ -9,8 +9,11 @@ class Admins::ParkingsController < ApplicationController
   end
 
   def update
-  @parking = Parking.find(current_parking.id)
-  @parking.update(parking_params)
-    redirect_to admins_parkings_show_path
+    @parking = Parking.find(current_parking.id)
+    if @parking.update(parking_params)
+      redirect_to admins_parkings_show_path, success: "変更を完了しました。"
+    else
+      render :edit, warning: "変更できませんでした。"
+    end
   end
 end

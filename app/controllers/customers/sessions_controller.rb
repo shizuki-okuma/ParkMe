@@ -37,7 +37,8 @@ class Customers::SessionsController < Devise::SessionsController
   def customer_state
     @customer = Customer.find_by(email: params[:customer][:email])
     return if !@customer
-    if @customer.present? && @customer.valid_password?(params[:customer][:password])
+    if @customer.present? && @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted == true
+      # 退会済み
       redirect_to new_customer_registration_path
     end
   end
