@@ -1,14 +1,10 @@
-ja: # 日本語の設定を行う
-  enums: # enumの設定を行う
-  rental: # モデル名
-    payment_method: #カラム名
-      credit_card: "クレジットカード"
-      transfer: "銀行振込"
-    status:
-      rentaled: "レンタル済み"
-      rental: "レンタル中"
-      cancel: "キャンセル"
+ja:
   activerecord:
     errors:
       messages:
-        record_invalid: "バリデーションに失敗しました: %{errors}"
+        record_invalid: "レコードが無効です"
+      models:
+        rental:
+          attributes:
+            customer:
+              required: "顧客は必須です"

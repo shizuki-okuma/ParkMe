@@ -3,31 +3,39 @@ class Customers::RentalsController < ApplicationController
     @rental = Rental.new
     @customer = current_customer
     @parking = Parking.find(params[:parking_id])
+    @rental.parking = @parking
     @beginning_of_month = Time.zone.now.beginning_of_month
     @end_of_month = Time.zone.now.end_of_month
     @beginning_end_month = @beginning_of_month..@end_of_month
     Customer.where(created_at: @beginning_of_month..@end_of_month)
-  end
-
-  def confirm
-    @rental = Rental.new(rental_params)
-    @customer = current_customer
-    @total = 0
-    @parking = Parking.find(params[:parking_id])
     
   end
-
-  def thanks
-  end
-
+  
   def create
     parking = Parking.find(params[:rental][:parking_id])
     rental = current_customer.rentals.new(rental_params)
     rental.status = 0
     rental.price = parking.price
     rental.amount = parking.amount
+    rental_price = RentalPrice.new(price: parking.price, zip_code: parking.zip_code)
+    rental.rental_price = rental_price
     rental.save
+    
     redirect_to thanks_customers_rentals_path
+  end
+  
+  def confirm
+    @customer = current_customer
+    @parking = Parking.find(params[:parking_id])
+    
+    @rental = Rental.new(rental_params)#パーキングが入ってるか確認
+    @rental.customer_id = current_customer.id
+    @rental.parking = @parking
+    @rental_price = RentalPrice.new(price: @parking.price, zip_code: @parking.zip_code)
+    @rental.rental_price = @rental_price
+  end
+
+  def thanks
   end
 
   def index

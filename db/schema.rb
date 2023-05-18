@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_10_064636) do
+ActiveRecord::Schema.define(version: 2023_05_17_065925) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -127,8 +127,17 @@ ActiveRecord::Schema.define(version: 2023_05_10_064636) do
     t.index ["reset_password_token"], name: "index_providers_on_reset_password_token", unique: true
   end
 
+  create_table "rental_prices", force: :cascade do |t|
+    t.integer "price"
+    t.string "zip_code"
+    t.string "average_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "rentals", force: :cascade do |t|
     t.integer "parking_id", null: false
+    t.integer "rental_price_id", null: false
     t.datetime "rental_at", null: false
     t.integer "total_payment", null: false
     t.integer "payment_method", null: false
@@ -141,6 +150,7 @@ ActiveRecord::Schema.define(version: 2023_05_10_064636) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_rentals_on_customer_id"
     t.index ["parking_id"], name: "index_rentals_on_parking_id"
+    t.index ["rental_price_id"], name: "index_rentals_on_rental_price_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

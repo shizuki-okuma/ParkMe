@@ -1,20 +1,10 @@
-<h1>Homes#top</h1>
-
-<!--検索窓-->
-<%= render 'searches/search' %>
-
-<p>ParkMeを選ぶ理由</p>
-point1
-
-point2
-
-point3
-
-<p>ParkMeの使い方</p>
-
-step1
-
-step1
-
-step3
-
+<div class="container">
+  <div class="row">
+    <div class="col-12  text-center">
+      レンタル会員の方は<%= link_to "こちら", customers_homes_customers_top_path, class: 'btn btn-success' %>
+    <div class="col-12 text-center">
+      提供会員の方は<%= link_to "こちら", providers_homes_providers_top_path, class: 'btn btn-success' %>
+    </div>
+    </div>
+  </div>
+</div>

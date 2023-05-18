@@ -1,0 +1,2 @@
+module Providers::RentalPricesHelper
+end

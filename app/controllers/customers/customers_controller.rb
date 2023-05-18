@@ -2,8 +2,8 @@ class Customers::CustomersController < ApplicationController
   before_action :ensure_guest_customer, only: [:edit]
   def show
     @customer = current_customer
-    @rentals = current_customer.rentals
-    @parking = current_customer.parkings
+    @rentals = current_customer.rentals.page(params[:page])
+    @parking = current_customer.parkings.page(params[:page])
   end
 
   def edit

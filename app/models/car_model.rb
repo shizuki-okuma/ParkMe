@@ -1,5 +1,5 @@
 class CarModel < ApplicationRecord
-  validates :name, presence: true
+  # validates :name, presence: true
   
   def self.looks(search, word)
     if search == "perfect_match"

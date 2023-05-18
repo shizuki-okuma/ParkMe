@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "search" => "searches#index"
   
   namespace :providers do
+    get 'homes/providers_top' => 'homes#providers_top'
     resources :providers, only:[:edit, :update, :destroy] do
         get 'withdraw' => 'providers#withdraw'
       collection do
@@ -14,9 +15,11 @@ Rails.application.routes.draw do
       end
     end  
     resources :parkings, only:[:show, :new, :create, :edit, :update]
+    resources :rental_prices, only:[:index]
   end
   
   namespace :customers do
+    get 'homes/customers_top' => 'homes#customers_top'
     resources :parkings, only:[:index, :show]
     resources :customers, only:[:edit, :update, :destroy] do
       get 'withdraw' => 'customers#withdraw'
