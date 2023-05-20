@@ -1,5 +1,5 @@
-@use '~bootstrap/scss/bootstrap';
-@use '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~bootstrap/scss/bootstrap';
+// @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 .back_image {
   background-image: url("../images/city.jpg");
   background-repeat: repeat-x;

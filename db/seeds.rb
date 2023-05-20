@@ -1,10 +1,8 @@
-# 管理者側のログインID
 Admin.create!(
     email: 'admin@admin',
     password: 'testtest'
 )
 
-車種をチェックボックスを使って表示する
 CarModel.create!(
   [
     {
@@ -27,6 +25,21 @@ CarModel.create!(
     }
     ]
 )
+
+provider = Customer.create!(
+    last_name: '佐々木',
+    first_name: '太郎',
+    last_name_kana: 'ササキ',
+    first_name_kana: 'タロウ',
+    email: 'sasaki@gmail.com',
+    password: 'sasaki',
+    zip_code: '123123',
+    address: '神奈川県横浜市123123',
+    phone_number: '123123',
+    is_deleted: false 
+)
+
+
 provider = Provider.create!(
     last_name: '田中',
     first_name: '太郎',

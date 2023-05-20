@@ -15,9 +15,9 @@
               <td><%= @parking.name %></td>
               <td><%= @parking.with_tax_price %>円</td>
               <td><%= @parking.amount %>台</td>
-              <td><%= @parking.subtotal %>円</td>
+              <td><%= @parking.with_tax_price %>円</td>
             </tr>
-            <% @total=@parking.subtotal %>
+            <% @total=@parking.with_tax_price %>
           </tbody>
         </table>
       </div>
