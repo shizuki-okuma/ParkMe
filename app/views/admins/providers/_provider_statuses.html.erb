@@ -1,0 +1,5 @@
+<% if provider.is_deleted %>
+  <%= link_to admins_provider_provider_statuses_path(provider), method: :post, remote: true do %><span class="text-secondary font-weight-bold">無効</span><% end %>
+<% else %>
+  <%= link_to admins_provider_provider_statuses_path(provider), method: :delete, remote: true do %><span class="text-success font-weight-bold">有効</span><% end %>
+<% end %>

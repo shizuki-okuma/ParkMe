@@ -1,0 +1,49 @@
+<div class="container mt-5 mb-5">
+   <div class="row">
+    <div class="mb-4">
+    <h3><%= @provider.last_name %><%= @provider.first_name %>さんの会員詳細</h3>
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th>会員ID</th>
+          <td><%= @provider.id %></td>
+        </tr>
+        <tr>
+          <th>氏名</th>
+          <td><%= @provider.last_name %><%= @provider.first_name %></td>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <td><%= @provider.last_name_kana %><%= @provider.first_name_kana %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @provider.zip_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @provider.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @provider.phone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @provider.email %></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <% if @provider.is_deleted == false %>
+            <td><p class="text-success">有効</p></td>
+          <% elsif %>
+            <td><p class="text-secondary">退会</p></td>
+          <% end %>
+        </tr>
+      </tbody>
+       <tr>
+       <td><%= link_to "駐車場一覧を見る", admins_parkings_path(@provider.id), class: "btn btn-success" %></td>
+      </table>
+    </div>
+  </div>
+</div>

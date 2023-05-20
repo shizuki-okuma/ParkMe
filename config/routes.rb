@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   
-  namespace :providers do
-    get 'rental_prices/index'
-  end
   root to: 'homes#top'
   get "search" => "searches#index"
   
@@ -50,6 +47,9 @@ Rails.application.routes.draw do
   
   namespace :admins do
     resources :rentals, only:[:index, :show, :update]
+    resources :providers, only:[:index, :show, :update] do
+      resource :provider_statuses, only:[:create, :destroy]
+    end
     resources :customers, only:[:index, :show, :update] do
       resource :statuses, only:[:create, :destroy]
     end

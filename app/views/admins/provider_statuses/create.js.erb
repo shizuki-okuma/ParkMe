@@ -1,0 +1,2 @@
+$('#provider_status_buttons_<%= @provider.id %>').html("<%= j(render "admins/providers/provider_statuses", provider: @provider) %>");
+$('#flash_message').html("<%= j(render "customers/shared/flash_message") %>");
