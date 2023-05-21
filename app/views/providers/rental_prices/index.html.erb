@@ -2,7 +2,7 @@
   <h5>地域別平均貸し出し金額</h5>
     <div class="row">
       <div class="col-10">
-    <%= form_with model: @rental_prices, url: providers_rental_prices_path do %>
+    <%= form_with url: providers_rental_prices_path, method: :get do %>
     <%= label_tag :zip_code, "地域選択：" %>
     <%= select_tag :zip_code, options_for_select(RentalPrice.distinct.pluck(:zip_code)) %>
     <%= submit_tag "表示" %>
@@ -19,7 +19,7 @@
         <% @rental_prices.each do |rental_price| %>
           <tr>
             <td><%= rental_price.zip_code %></td>
-            <td><%= rental_price.average_price(rental_price.zip_code) %></td>
+            <td class="text-right"><%= rental_price.average_price(rental_price.zip_code) %></td>
           </tr>
         <% end %>
       </tbody>

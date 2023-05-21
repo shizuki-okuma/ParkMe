@@ -11,6 +11,6 @@ class RentalPrice < ApplicationRecord
     # 
     # Parking.all.joins(:rentals).pluck(:total_payment).sum
     # ex 7700
-    Parking.all.joins(:rentals).pluck(:total_payment).sum / Parking.where(zip_code: zip_code).joins(:rentals).group(:zip_code).count.values[0]
+    Parking.where(zip_code: zip_code).joins(:rentals).pluck(:total_payment).sum / Parking.where(zip_code: zip_code).joins(:rentals).group(:zip_code).count.values[0]
   end
 end

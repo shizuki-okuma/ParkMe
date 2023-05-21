@@ -33,6 +33,7 @@ class Customers::RentalsController < ApplicationController
     @rental.parking = @parking
     @rental_price = RentalPrice.new(price: @parking.price, zip_code: @parking.zip_code)
     @rental.rental_price = @rental_price
+    @total=@parking.with_tax_price
   end
 
   def thanks
