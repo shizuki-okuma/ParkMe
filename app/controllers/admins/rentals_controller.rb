@@ -2,7 +2,7 @@ class Admins::RentalsController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @rentals = Rental.all
+    @rentals = Rental.page(params[:page])
     
   end
   

@@ -1,10 +1,71 @@
 ja:
+  enums:
+  rental:
+    payment_method:
+      credit_card: "クレジットカード"
+      transfer: "銀行振込"
+    status:
+      rentaled: "レンタル済み"
+      rental: "レンタル中"
+      cancel: "キャンセル"
   activerecord:
     errors:
       messages:
-        record_invalid: "レコードが無効です"
+        record_invalid: "バリデーションに失敗しました"
       models:
-        rental:
+        customer:
           attributes:
-            customer:
-              required: "顧客は必須です"
+            email:
+              blank: "を入力してください"
+            password: 
+              blank: "を入力してください"
+            first_name: 
+              blank: "を入力してください"
+            first_name_kana: 
+              blank: "を入力してください"
+            last_name: 
+              blank: "を入力してください"
+            last_name_kana: 
+              blank: "を入力してください"
+            zip_code:
+              blank: "を入力してください"
+            address:
+              blank: "を入力してください"
+            phone_number:
+              blank: "を入力してください"
+        provider:
+          attributes:
+            email:
+              blank: "を入力してください"
+            password: 
+              blank: "を入力してください"
+            first_name: 
+              blank: "を入力してください"
+            first_name_kana: 
+              blank: "を入力してください"
+            last_name: 
+              blank: "を入力してください"
+            last_name_kana: 
+              blank: "を入力してください"
+            zip_code:
+              blank: "を入力してください"
+            address:
+              blank: "を入力してください"
+            phone_number:
+              blank: "を入力してください"
+        # parking:
+        #   attributes:
+        #     name: "駐車場名"
+        #       blank: "を入力してください"
+        #     zip_code: "郵便番号"
+        #       blank: "を入力してください"
+        #     address: "住所"
+        #       blank: "を入力してください"
+        #     amount: "台数"
+        #       blank: "を入力してください"
+        #     description: "駐車場説明"
+        #       blank: "を入力してください"
+        #     car_model: "車種"
+        #       blank: "を選択してください"
+        #     price: "税抜価格"
+        #       blank: "を入力してください"

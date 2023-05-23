@@ -16,17 +16,30 @@
 
         <tbody>
           <% @customers.each do |customer| %>
-          <tr>
+          <tr class="clickable-row" onclick='window.location="/admins/customers/<%= customer.id %>"' role="link">
             <td><%= customer.id %></td>
-            <td><%= link_to customer.last_name + customer.first_name, admins_customer_path(customer.id) %></td>
+            <td><%= customer.last_name + customer.first_name %></td>
             <td><%= customer.email %></td>
             <td id="status_buttons_<%= customer.id %>">
             <%= render 'admins/customers/statuses', customer: customer %>
             </td>
           </tr>
+          
           <% end %>
         </tbody>
       </table>
     </div>
   </div>
 </div>
+<script>
+  $(document).ready(function() {
+    $('.clickable-row').hover(function() {
+      $(this).toggleClass('highlighted-row');
+    });
+  });
+</script>
+<style>
+  .highlighted-row {
+    background-color: #ffcc00;
+  }
+</style>
