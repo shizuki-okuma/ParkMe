@@ -18,17 +18,32 @@ class Parking < ApplicationRecord
   
   def self.looks(search, word)
     if search == "perfect_match"
-      @parking = Parking.where("name LIKE?", "#{word}")
+      Parking.where("name LIKE?", "#{word}")
     elsif search == "forward_match"
-      @parking = Parking.where("name LIKE?","#{word}%")
+      Parking.where("name LIKE?","#{word}%")
     elsif search == "backward_match"
-      @parking = Parking.where("name LIKE?","%#{word}")
+      Parking.where("name LIKE?","%#{word}")
     elsif search == "partial_match"
-      @parking = Parking.where("name LIKE?","%#{word}%")
+      Parking.where("name LIKE?","%#{word}%")
     else
-      @parking = Parking.all
+      Parking.all
     end
   end
+  
+  def self.looks_zipcode(search, word)
+    if search == "perfect_match"
+      Parking.where("zip_code LIKE?", "#{word}")
+    elsif search == "forward_match"
+      Parking.where("zip_code LIKE?","#{word}%")
+    elsif search == "backward_match"
+      Parking.where("zip_code LIKE?","%#{word}")
+    elsif search == "partial_match"
+      Parking.where("zip_code LIKE?","%#{word}%")
+    else
+      Parking.all
+    end
+  end
+  
   def subtotal
     price*amount
   end

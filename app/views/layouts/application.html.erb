@@ -13,59 +13,19 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   
-    <body class="wrap">
-      
-      <main class="mb-auto">
-        <%= render 'layouts/header' %>
-        <div class="back_image"></div>
-        <div id="flash_message"><%= render 'customers/shared/flash_message' %></div>
-        
-      <%= yield %>
-      
-      </main>
+  <body class="wrap">
     
-      <footer class="bg-dark text-white pt-5 pb-4">
-        <div class="container-fluid mt-auto">
-          <div class="dotted-border"></div>
-          <div class="border-line"></div>
-          <div class="text-center pt-3">
-            <%= link_to "https://twitter.com/", class: "text-decoration-none" do %>
-              <i class="fab fa-twitter-square h2 text-muted"></i>
-            <% end %>
-        
-            <%= link_to "https://www.facebook.com/", class: "text-decoration-none" do %>
-              <i class="fab fa-facebook h2 text-muted"></i>
-            <% end %>
-        
-            <%= link_to "https://www.instagram.com/", class: "text-decoration-none" do %>
-              <i class="fab fa-instagram-square h2 text-muted"></i>
-            <% end %>
-        
-            <%= link_to "https://line.me/ja/", class: "text-decoration-none" do %>
-              <i class="fab fa-line h2 text-muted"></i>
-            <% end %>
-          </div>
-          <p class="text-center text-muted">©Copyright 2023 ParkMe ALL Rights reserved.</p>
-          <div class="text-center"><%= link_to "管理者用", admin_session_path %></div>
-        </div>
-      </footer>
-    </body>
-  <style>
-  .dotted-border {
-    border-width: 5px;
-    border-style: dashed;
-    border-color: #C0C0C0;
-    background-repeat: repeat-x;
-    margin-bottom: 30px;
-  }
-  .border-line {
-    border: 1px solid #C0C0C0;
-  }
+    <main class="mb-auto">
+      <%= render 'layouts/header' %>
+      <div class="back_image"></div>
+      <div id="flash_message"><%= render 'customers/shared/flash_message' %></div>
+      
+    <%= yield %>
+    
+    </main>
   
-  
-  body{
-    display: flex;
-    flex-direction: column;
-  }
-</style>
+    <footer>
+      <%= render 'layouts/footer' %>
+    </footer>
+  </body>
 </html>

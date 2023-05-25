@@ -1,0 +1,24 @@
+<div class="container-fluid mt-auto">
+  <div class="dotted-border mt-5"></div>
+  <div class="border-line"></div>
+  
+  <div class="text-center pt-3">
+    <%= link_to "https://twitter.com/", class: "text-decoration-none" do %>
+      <i class="fab fa-twitter-square h2 text-muted"></i>
+    <% end %>
+
+    <%= link_to "https://www.facebook.com/", class: "text-decoration-none" do %>
+      <i class="fab fa-facebook h2 text-muted"></i>
+    <% end %>
+
+    <%= link_to "https://www.instagram.com/", class: "text-decoration-none" do %>
+      <i class="fab fa-instagram-square h2 text-muted"></i>
+    <% end %>
+
+    <%= link_to "https://line.me/ja/", class: "text-decoration-none" do %>
+      <i class="fab fa-line h2 text-muted"></i>
+    <% end %>
+  </div>
+  <p class="text-center text-muted">©Copyright 2023 ParkMe ALL Rights reserved.</p>
+  <div class="text-center"><%= link_to "管理者用", admin_session_path %></div>
+</div>

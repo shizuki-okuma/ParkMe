@@ -37,6 +37,26 @@ background-color: #ffcc00;
 th {
   background: #008BBB;
 }
-thead th{
+thead th {
 	background-color: #008BBB;
+}
+.clickable-row {
+}
+.dotted-border {
+  border-width: 5px;
+  border-style: dashed;
+  border-color: #C0C0C0;
+  background-repeat: repeat-x;
+  margin-bottom: 30px;
+}
+.border-line {
+  border: 1px solid #C0C0C0;
+}
+body{
+  display: flex;
+  flex-direction: column;
+}
+footer{
+  background: #555555;
+  
 }
