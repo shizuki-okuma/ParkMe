@@ -54,6 +54,12 @@ class Customers::RentalsController < ApplicationController
     @rental.save!
     redirect_to  my_page_customers_customers_path, notice:'キャンセルしました。'
   end
+  def update
+    @rental = Rental.find(params[:id])
+    @rental.status = params[:status].to_i
+    @rental.save
+    redirect_to  my_page_customers_customers_path, notice:'変更しました。'
+  end
 private
 
   def rental_params

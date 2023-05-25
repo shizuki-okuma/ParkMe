@@ -65,7 +65,9 @@
               <td><%= parking.name %></td>
               <td><%= parking.zip_code %></td>
               <td><%= parking.address %></td>
-              <td><%= parking.is_active %></td>
+              <td id="parking_status_buttons_<%= parking.id %>">
+                <%= render 'providers/providers/parking_statuses', parking: parking %>
+              </td>
               <td><%= link_to "詳細を見る", providers_parking_path(parking), class: 'btn btn-primary' %></td>
             </tr>
           </tbody>
@@ -99,6 +101,7 @@
         <% end %>
         </tbody>
         </table>
+        <%#= paginate @rentals %>
       </div>
   </div>
   

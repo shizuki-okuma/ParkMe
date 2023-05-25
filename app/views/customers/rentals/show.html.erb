@@ -30,13 +30,14 @@
             </tr>
             
             <tr>
-              <th style="width: 30%">商品説明 </th>
+              <th style="width: 30%">駐車場説明 </th>
               <td style="width: 70%"><%= @parking.description %></td>
             </tr>
             
             <tr>
               <th style="width: 30%">車種</th>
               <td style="width: 70%">
+                
                 <% @parking.car_models.each do |car_model| %>
                 <%= car_model.name %>
                 <% end %>
@@ -50,7 +51,7 @@
             
             <tr>
               <th style="width: 30%">販売ステータス</th>
-              <td style="width: 70%"><%= @parking.is_active %></td>
+              <td style="width: 70%"><%= @parking.is_active ? "販売中" : "販売停止"%></td>
             </tr>
             
           </tbody>

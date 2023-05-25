@@ -11,6 +11,32 @@ class Providers::ParkingsController < ApplicationController
     else
       render :new , warning: "登録ができませんでした。"
     end
+    # require "google_drive"
+
+    # # config.jsonを読み込んでセッションを確立
+    # session = GoogleDrive::Session.from_config("config.json")
+    
+    # # スプレッドシートをURLで取得
+    # sp = session.spreadsheet_by_url("https://docs.google.com/spreadsheets/d/16am8DVhp95Ijvg-pUVUtZIrudrf0Fogn0cbXkJ9tIqc/edit?usp=sharing")
+    
+    # # "シート1"という名前のワークシートを取得
+    # ws = sp.worksheet_by_title("シート2")
+    
+    
+    
+    # # セルを指定して値を更新　インデックスの基準は1
+    # ws[2, 1] = "provoder_id" # セルA2
+    # ws[2, 2] = "parking_id" # セルB2
+    # ws[2, 3] = "name"
+    # ws[2, 4] = "zip_code"
+    # ws[2, 5] = "address"
+    # ws[2, 6] = "amount"
+    # ws[2, 7] = "price"
+    # ws[2, 8] = "create_at"
+    # ws[2, 9] = "update_at"
+    
+    # # saveで変更を保存、実際にスプレッドシートに反映させる
+    # ws.save
   end
 
   def edit

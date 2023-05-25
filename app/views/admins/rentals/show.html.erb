@@ -52,16 +52,11 @@
           
           <tr>
             <th style="width: 30%">レンタルステータス</th>
-            <td style="width: 70%"><%= @parking.is_active %></td>
+            <td style="width: 70%"><%= @parking.is_active ? 'レンタル' : 'レンタル'%></td>
           </tr>
           
         </tbody>
       </table>
-      <% if current_customer %>
-      <div class="mx-auto mt-5">
-        <%= link_to "情報入力に進む", new_rental_path, class: "btn btn-success" %>
-      </div>
-      <% end %>
     </div>
   </div>
 </div>

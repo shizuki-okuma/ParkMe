@@ -16,3 +16,9 @@ import '@fortawesome/fontawesome-free/js/all'
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$(document).ready(function() {
+$('.clickable-row').hover(function() {
+$(this).toggleClass('highlighted-row');
+});
+});

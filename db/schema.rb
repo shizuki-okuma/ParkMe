@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_20_105049) do
+ActiveRecord::Schema.define(version: 2023_05_24_042423) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -91,6 +91,11 @@ ActiveRecord::Schema.define(version: 2023_05_20_105049) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["car_model_id"], name: "index_parking_sizes_on_car_model_id"
     t.index ["parking_id"], name: "index_parking_sizes_on_parking_id"
+  end
+
+  create_table "parking_statuses", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "parkings", force: :cascade do |t|

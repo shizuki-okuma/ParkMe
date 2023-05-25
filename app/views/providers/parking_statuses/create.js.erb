@@ -1,0 +1,2 @@
+$('#parking_status_buttons_<%= @parking.id %>').html("<%= j(render "providers/parkings/parking_statuses", parking: @parking) %>");
+$('#flash_message').html("<%= j(render "customers/shared/flash_message") %>");

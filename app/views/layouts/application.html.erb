@@ -6,14 +6,15 @@
       <script src="https://kit.fontawesome.com/b8df303df0.js" crossorigin="anonymous"></script>
       <%= csrf_meta_tags %>
       <%= csp_meta_tag %>
-  
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
-    <body>
+  
+    <body class="wrap">
+      
       <main class="mb-auto">
         <%= render 'layouts/header' %>
         <div class="back_image"></div>
@@ -22,36 +23,30 @@
       <%= yield %>
       
       </main>
+    
       <footer class="bg-dark text-white pt-5 pb-4">
-        
         <div class="container-fluid mt-auto">
           <div class="dotted-border"></div>
           <div class="border-line"></div>
-          <!--text-centerで中央寄せ pt-3=padding topが1rem-->
           <div class="text-center pt-3">
-            <!--twitterのtopページurlとアイコン-->
             <%= link_to "https://twitter.com/", class: "text-decoration-none" do %>
-              <!--twitterのアイコン　mutedカラー-->
               <i class="fab fa-twitter-square h2 text-muted"></i>
             <% end %>
         
             <%= link_to "https://www.facebook.com/", class: "text-decoration-none" do %>
-              <!--facebookのアイコン　mutedカラー-->
               <i class="fab fa-facebook h2 text-muted"></i>
             <% end %>
         
             <%= link_to "https://www.instagram.com/", class: "text-decoration-none" do %>
-              <!--instagramのアイコン　mutedカラー-->
               <i class="fab fa-instagram-square h2 text-muted"></i>
             <% end %>
         
             <%= link_to "https://line.me/ja/", class: "text-decoration-none" do %>
-              <!--lineのアイコン　mutedカラー-->
               <i class="fab fa-line h2 text-muted"></i>
             <% end %>
           </div>
-          <!--text-centerで中央寄せ　mutedカラー-->
           <p class="text-center text-muted">©Copyright 2023 ParkMe ALL Rights reserved.</p>
+          <div class="text-center"><%= link_to "管理者用", admin_session_path %></div>
         </div>
       </footer>
     </body>
@@ -65,7 +60,17 @@
   }
   .border-line {
     border: 1px solid #C0C0C0;
-    
+  }
+  
+  footer{
+    width: 100%;
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+  }
+  
+  body{
+    display: flex;
+    flex-direction: column;
   }
 </style>
 </html>

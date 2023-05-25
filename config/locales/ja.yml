@@ -1,13 +1,14 @@
 ja:
   enums:
-  rental:
-    payment_method:
-      credit_card: "クレジットカード"
-      transfer: "銀行振込"
-    status:
-      rentaled: "レンタル済み"
-      rental: "レンタル中"
-      cancel: "キャンセル"
+    rental:
+      payment_method:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
+      status:
+        rentaled: "レンタル済み"
+        rental: "レンタル中"
+        cancel: "キャンセル"
+        waiting: "待機中"
   activerecord:
     errors:
       messages:

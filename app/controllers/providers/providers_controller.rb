@@ -2,6 +2,7 @@ class Providers::ProvidersController < ApplicationController
   before_action :ensure_guest_provider, only: [:edit]
   def show
     @provider = Provider.find(current_provider.id)
+    # @rentals = @provider.rentals.page(params[:page]).per(10)
     @parkings = Parking.where(provider_id: current_provider.id) #登録した駐車場のみを表示
     @all_parkings = Parking.where(id: @parkings.pluck(:id)).joins(:rentals).order(:rental_id).uniq
   end
@@ -20,12 +21,9 @@ class Providers::ProvidersController < ApplicationController
     end
   end
 
-  def quit
-  end
-
-  def destroy
+  def withdraw
     @provider = current_provider
-    @provider.update(is_deleted: false)
+    @provider.update(is_deleted: true)
      reset_session
      redirect_to root_path
   end

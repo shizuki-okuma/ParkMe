@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  
   root to: 'homes#top'
   get "search" => "searches#index"
   
@@ -14,7 +15,9 @@ Rails.application.routes.draw do
         get 'quit'
       end
     end  
-    resources :parkings, only:[:show, :new, :create, :edit, :update]
+    resources :parkings, only:[:show, :new, :create, :edit, :update] do
+      resource :parking_statuses, only:[:create, :destroy]
+    end
     resources :rental_prices, only:[:index]
     
   end
@@ -33,7 +36,7 @@ Rails.application.routes.draw do
       end
     end
     
-    resources :rentals, only:[ :index, :show, :new, :create] do
+    resources :rentals, only:[ :index, :show, :new, :create, :update] do
     collection do
       get 'thanks'
       post 'confirm'
