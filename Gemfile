@@ -67,3 +67,4 @@ gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
 gem 'devise-i18n'
+gem 'google_drive'
