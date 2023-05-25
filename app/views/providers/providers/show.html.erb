@@ -1,83 +1,80 @@
 <div class="container">
   <h3>マイページ</h3>
-  
-  <div class="row my-4">
+  <div class="row mt-10 ml-1">
     <h3>登録情報</h3>
-    
     <% if @provider.email != 'guest@example.com' %>
-    <div class='col-10'>
       <%= link_to "編集する", edit_providers_provider_path(@provider), class: 'btn btn-success' %>
-    </div>
     <% end %>
   </div>
   
-   <div class='col-10'>
-    <table class= "table table-bordered">
-      <thead class="thead-light">
-        <tr>
-          <th>名前</th>
-            <td><%= @provider.last_name %> <%= @provider.first_name %></td>
-        </tr>
-        <tr>
-        <th>カナ</th>
-          <td><%= @provider.last_name_kana %> <%= @provider.first_name_kana %></td>
-        </tr>
-        <tr>
-          <th>郵便番号</th>
-            <td><%= @provider.zip_code %></td>
-        </tr>
-        <tr>
-          <th>住所</th>
-            <td><%= @provider.address %></td>
-        </tr>
-        <tr>
-          <th>電話番号</th>
-            <td><%= @provider.phone_number %></td>
-        </tr>
-        <tr>
-          <th>メールアドレス</th>
-            <td><%= @provider.email %></td>
-        </tr>
-      </thead>
-    </table>
-  </div>
-    <h3>提供駐車場</h3>
-    <div class="row my-3">
-      <div class='col-10'>
-        
-        <table class="table">
+   <div class='row justify-content-center'>
+     <div class='col-10'>
+      <table class= "table table-bordered">
         <thead>
-          <tr class="table-active">
-            <th>駐車場ID</th>
-            <th>駐車場名</th>
-            <th>駐車場郵便番号</th>
-            <th>駐車場住所</th>
-            <th>駐車場ステータス</th>
-            <th>駐車場詳細</th>
+          <tr>
+            <th>名前</th>
+              <td><%= @provider.last_name %> <%= @provider.first_name %></td>
+          </tr>
+          <tr>
+          <th>カナ</th>
+            <td><%= @provider.last_name_kana %> <%= @provider.first_name_kana %></td>
+          </tr>
+          <tr>
+            <th>郵便番号</th>
+              <td><%= @provider.zip_code %></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+              <td><%= @provider.address %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+              <td><%= @provider.phone_number %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+              <td><%= @provider.email %></td>
           </tr>
         </thead>
-        
-        <!--登録した駐車場一覧-->
-        <% @parkings.each do |parking| %>
-          <tbody>
-            <tr>
-              <td><%= parking.id %></td>
-              <td><%= parking.name %></td>
-              <td><%= parking.zip_code %></td>
-              <td><%= parking.address %></td>
-              <td id="parking_status_buttons_<%= parking.id %>">
-                <%= render 'providers/providers/parking_statuses', parking: parking %>
-              </td>
-              <td><%= link_to "詳細を見る", providers_parking_path(parking), class: 'btn btn-primary' %></td>
-            </tr>
-          </tbody>
-        <% end %>
-        </table>
+      </table>
       </div>
-      <%= link_to "貸し出し地域平均貸し出し金額を表示はこちら", providers_rental_prices_path %>
-  </div>
+    </div>
+      <h3>提供駐車場</h3>
+      <div class="row justify-content-center">
+        <div class='col-10'>
+          
+          <table class="table">
+          <thead>
+            <tr class="table-active">
+              <th>駐車場ID</th>
+              <th>駐車場名</th>
+              <th>駐車場郵便番号</th>
+              <th>駐車場住所</th>
+              <th>駐車場ステータス</th>
+              <th>駐車場詳細</th>
+            </tr>
+          </thead>
+          
+          <% @parkings.each do |parking| %>
+            <tbody>
+              <tr>
+                <td><%= parking.id %></td>
+                <td><%= parking.name %></td>
+                <td><%= parking.zip_code %></td>
+                <td><%= parking.address %></td>
+                <td id="parking_status_buttons_<%= parking.id %>">
+                  <%= render 'providers/providers/parking_statuses', parking: parking %>
+                </td>
+                <td><%= link_to "詳細を見る", providers_parking_path(parking), class: 'btn btn-primary' %></td>
+              </tr>
+            </tbody>
+          <% end %>
+          </table>
+      </div>
+    </div>
+  
     <h3>提供履歴</h3>
-    <div class="row">
+    <div class="row justify-content-center">
       <div class='col-10'>
        <table class= "table table-bordered">
          <thead>
@@ -101,6 +98,9 @@
         <% end %>
         </tbody>
         </table>
+        <div class="provover-show-line text-center coler:white">
+          <%= link_to "貸し出し地域平均貸し出し金額を表示はこちら", providers_rental_prices_path %>
+        </div>
         <%#= paginate @rentals %>
       </div>
   </div>

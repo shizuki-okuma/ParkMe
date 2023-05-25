@@ -12,3 +12,31 @@ background-color: #ffcc00;
 .pagination {
   justify-content: center;
 }
+.hometop-line {
+  border: solid 4px #008BBB;
+  border-radius: 40px;
+  margin-bottom: 10px;
+  padding: 10px;
+  padding-left: 40px;
+  width: auto;
+  background: #008BBB;
+  font-weight: bold;
+  color: InfoBackground;
+}
+.provover-show-line {
+  border: solid 4px #008BBB;
+  border-radius: 40px;
+  margin-bottom: 10px;
+  padding: 10px;
+  padding-left: 40px;
+  width: auto;
+  background: #008BBB;
+  font-weight: bold;
+  color: InfoBackground;
+}
+th {
+  background: #008BBB;
+}
+thead th{
+	background-color: #008BBB;
+}

@@ -1,18 +1,16 @@
-<div class="container sm-mt-5 mb-5">
-  <div class="row justify-content-center">
-  <h3 class="col-sm-mb-4"><strong>マイページ</strong></h3>
+<div class="container">
+  <h3>マイページ</h3>
+  <div class="row mt-10 ml-1">
+    <h3>登録情報</h3>
+    <% if @customer.email != 'guest@example.com' %>
+      <%= link_to "編集する", edit_customers_customer_path(@customer), class: 'btn btn-success' %>
+    <% end %>
+  </div>
   
-  <div class="container">
-    <div class="row">
-      <h5>登録情報</h5>
-        <% if current_customer.email != 'guest@example.com' %>
-        <%= link_to "編集する", edit_customers_customer_path(current_customer), class: 'btn btn-success' %>
-        <% end %>
-    </div>
-  
-    <div class='col-12'>
+  <div class='row justify-content-center'>
+    <div class='col-10'>
       <table class= "table table-bordered">
-        <thead class="thead-light">
+        <thead>
           <tr>
             <th>名前</th>
               <td><%= @customer.last_name %> <%= @customer.first_name %></td>
@@ -42,31 +40,43 @@
     </div>
   </div>
   
-    <div class="container">
-      <div class="row">
-        <h5>レンタル履歴</h5>
-      </div>
-          <div class='col-12'>
-           <table class= "table table-bordered">
-             <% @rentals.each do |rental| %>
-              <tr>
-                <td><%= rental.id %></td>
-                <td><%= rental.rental_at.strftime("%Y年%-m月%-d日")%></td>
-                <td>¥<%= rental.total_payment %>円</td>
-                <td><%= rental.parking.name %></td>
-                <td><%= link_to "詳細", customers_rental_path(rental.id), class: 'btn btn-success' %></td>
-                <td>
-                  <%= form_with model: @rental, url: customers_rental_path(rental.id), method: :patch do |f| %>
-                  <%= f.select :status, [['レンタル済み',0],['レンタル中',1], ['キャンセル',2], ['待機中',3]], {}, {'onChange'=>'javascript: this.form.submit()'} %>
-                  <% end %>
-                </td>
-                <td><%= rental.status_i18n %></td>
-                <td><%= link_to "キャンセル", cancel_customers_rental_path(rental.id), method: :post, class: 'btn btn-success' %></td>  
-              </tr>
-            <% end %>
-            </table>
-            <%= paginate @rentals %>
-          </div>
+  <div class="row justify-content-center">
+    <div class='col-10'>
+      <h5>レンタル履歴</h5>
+     
+      <table class= "table table-bordered">
+        <thead>
+          <tr>
+            <th>レンタルID</th>
+            <th>レンタル年月日</th>
+            <th>レンタル料金</th>
+            <th>レンタル駐車場名</th>
+            <th>レンタル詳細</th>
+            <th>ステータス変更フォーム</th>
+            <th>レンタルステータス</th>
+            <th>キャンセルボタン</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @rentals.each do |rental| %>
+            <tr>
+              <td><%= rental.id %></td>
+              <td><%= rental.rental_at.strftime("%Y年%-m月%-d日")%></td>
+              <td>¥<%= rental.total_payment %>円</td>
+              <td><%= rental.parking.name %></td>
+              <td><%= link_to "詳細", customers_rental_path(rental.id), class: 'btn btn-success' %></td>
+              <td>
+                <%= form_with model: @rental, url: customers_rental_path(rental.id), method: :patch do |f| %>
+                <%= f.select :status, [['レンタル済み',0],['レンタル中',1], ['キャンセル',2], ['待機中',3]], {}, {'onChange'=>'javascript: this.form.submit()'} %>
+                <% end %>
+              </td>
+              <td><%= rental.status_i18n %></td>
+              <td><%= link_to "キャンセル", cancel_customers_rental_path(rental.id), method: :post, class: 'btn btn-success' %></td>  
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <%= paginate @rentals %>
       </div>
     </div>
 </div>
