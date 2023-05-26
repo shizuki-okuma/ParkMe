@@ -1,6 +1,16 @@
 ja:
   activerecord:
     attributes:
+      parking: 
+        name: 駐車場名
+        zip_code: 郵便番号
+        address: 住所
+        amount: 台数
+        description: 説明文
+        price: 税抜価格
+        car_models: 車種
+        is_active: 販売ステータス
+        parking_sizes: 駐車場の広さ
       customer:
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
@@ -66,6 +76,7 @@ ja:
     models:
       customer: レンタル会員
       provider: 提供会員
+      parking: 駐車場
     confirmations:
       confirmed: メールアドレスが確認できました。
       new:

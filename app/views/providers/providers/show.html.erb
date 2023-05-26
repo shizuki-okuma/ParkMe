@@ -38,63 +38,64 @@
         </thead>
       </table>
     </div>
-    <h3>提供駐車場</h3>
-      <div class="row justify-content-center">
-        <div class='col-10'>
-          
-          <table class="table">
-          <thead>
-            <tr class="table-active">
-              <th>駐車場ID</th>
-              <th>駐車場名</th>
-              <th>駐車場郵便番号</th>
-              <th>駐車場住所</th>
-              <th>駐車場ステータス</th>
-              <th>駐車場詳細</th>
-            </tr>
-          </thead>
-          <% @parkings.each do |parking| %>
-            <tbody>
-              <tr>
-                <td><%= parking.id %></td>
-                <td><%= parking.name %></td>
-                <td><%= parking.zip_code %></td>
-                <td><%= parking.address %></td>
-                <td id="parking_status_buttons_<%= parking.id %>">
-                  <%= render 'providers/providers/parking_statuses', parking: parking %>
-                </td>
-                <td><%= link_to "詳細を見る", providers_parking_path(parking), class: 'btn btn-primary' %></td>
-              </tr>
-            </tbody>
-          <% end %>
-        </table>
-        </div>
+  </div>
+  
+  <h3>提供駐車場</h3>
+  <div class="row justify-content-center">
+    <div class='col-10'>
+      <table class="table">
+        <thead>
+          <tr class="table-active">
+            <th>駐車場ID</th>
+            <th>駐車場名</th>
+            <th>駐車場郵便番号</th>
+            <th>駐車場住所</th>
+            <th>駐車場ステータス</th>
+            <th>駐車場詳細</th>
+          </tr>
+        </thead>
+        <% @parkings.each do |parking| %>
+        <tbody>
+          <tr>
+            <td><%= parking.id %></td>
+            <td><%= parking.name %></td>
+            <td><%= parking.zip_code %></td>
+            <td><%= parking.address %></td>
+            <td id="parking_status_buttons_<%= parking.id %>">
+              <%= render 'providers/providers/parking_statuses', parking: parking %>
+            </td>
+            <td><%= link_to "詳細を見る", providers_parking_path(parking), class: 'btn btn-primary' %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
     </div>
+  </div>
   
     <h3>提供履歴</h3>
     <div class="row justify-content-center">
       <div class='col-10'>
-       <table class= "table table-bordered">
-         <thead>
-          <tr class="table-active">
-            <th>レンタルID</th>
-            <th>レンタル年月日</th>
-            <th>レンタル者氏名</th>
-            <th>レンタル内容詳細</th>
-          </tr>
-        </thead>
-        <tbody>
-         <% @all_parkings.each do |parking| %>
-           <% parking.rentals.each do |rental| %>
+        <table class="table table-bordered">
+          <thead>
+            <tr class="table-active">
+              <th>レンタルID</th>
+              <th>レンタル年月日</th>
+              <th>レンタル者氏名</th>
+              <th>レンタル内容詳細</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @all_parkings.each do |parking| %>
+          <% parking.rentals.each do |rental| %>
             <tr>
               <td><%= rental.id %></td>
               <td><%= rental.rental_at.strftime("%Y年%-m月%-d日")%></td>
               <td><%= rental.customer.last_name + rental.customer.first_name %></td>
               <td><%= link_to "詳細", customers_rental_path(rental.id), class: 'btn btn-success' %></td>
             </tr>
-           <% end %> 
-        <% end %>
-        </tbody>
+          <% end %> 
+          <% end %>
+          </tbody>
         </table>
         <div class="provover-show-line text-center coler:white">
           <%= link_to "貸し出し地域平均貸し出し金額を表示はこちら", providers_rental_prices_path, style: "color: white;"%>

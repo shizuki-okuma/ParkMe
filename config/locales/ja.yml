@@ -54,19 +54,24 @@ ja:
               blank: "を入力してください"
             phone_number:
               blank: "を入力してください"
-        # parking:
-        #   attributes:
-        #     name: "駐車場名"
-        #       blank: "を入力してください"
-        #     zip_code: "郵便番号"
-        #       blank: "を入力してください"
-        #     address: "住所"
-        #       blank: "を入力してください"
-        #     amount: "台数"
-        #       blank: "を入力してください"
-        #     description: "駐車場説明"
-        #       blank: "を入力してください"
-        #     car_model: "車種"
-        #       blank: "を選択してください"
-        #     price: "税抜価格"
-        #       blank: "を入力してください"
+        parking:
+          attributes:
+            name:
+              blank: "を入力してください"
+            zip_code:
+              blank: "を入力してください"
+            address: 
+              blank: "を入力してください"
+            amount: 
+              blank: "を入力してください"
+            description:
+              blank: "を入力してください"
+            price: 
+              blank: "を入力してください"
+            car_models : 
+              blank: "を入力してください"
+            is_active : 
+              blank: "を入力してください"
+            parking_sizes : 
+              blank: "を入力してください"
+

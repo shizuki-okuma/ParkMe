@@ -7,8 +7,8 @@
       <table class="table table-borderless">
         <tbody>
           <tr>
-            <th><%= f.label "商品名" %></td>
-            <td><%= f.text_field :name, class: "form-control", :placeholder => "商品名" %></td>
+            <th><%= f.label "駐車場名" %></th>
+            <td><%= f.text_field :name, class: "form-control", :placeholder => "駐車場名" %></td>
           </tr>
           
           <tr>
@@ -27,12 +27,12 @@
           </tr>
           
           <tr>
-            <th><%= f.label "商品説明" %></td>
+            <th><%= f.label "商品説明" %></th>
             <td><%= f.text_area :description, class: "form-control", :placeholder => "ここに説明文を記載してください" %></td>
           </tr>
           
           <tr>
-            <th><%= f.label "車種" %></td>
+            <th><%= f.label "車種" %></th>
             <td>
               <%= f.collection_check_boxes(:car_model_ids, CarModel.all, :id, :name) do |b| %>
                 <%= b.label { b.check_box + b.text } %>
@@ -41,7 +41,7 @@
           </tr>
             
           <tr>
-            <th><%= f.label '税抜価格' %></td>
+            <th><%= f.label '税抜価格' %></th>
             <td>
               <div class="input-group">
                 <%= f.text_field :price, class: 'form-control' %>
@@ -51,7 +51,7 @@
           </tr>
           
           <tr>
-            <th><%= f.label "販売ステータス" %></td>
+            <th><%= f.label "販売ステータス" %></th>
             <td>
               <%= f.radio_button :is_active, true %>
                 <%= f.label :is_active, '販売中' %>
