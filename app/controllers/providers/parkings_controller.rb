@@ -13,7 +13,7 @@ class Providers::ParkingsController < ApplicationController
     session = GoogleDrive::Session.from_config("config.json")
     
     # スプレッドシートをURLで取得
-    sp = session.spreadsheet_by_url("https://docs.google.com/spreadsheets/d/16am8DVhp95Ijvg-pUVUtZIrudrf0Fogn0cbXkJ9tIqc/edit?usp=sharing")
+    sp = session.spreadsheet_by_url(ENV['SHEET_URL'])
     
     # "シート1"という名前のワークシートを取得
     ws = sp.worksheet_by_title("シート1")
