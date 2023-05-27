@@ -7,33 +7,40 @@ class Providers::ParkingsController < ApplicationController
     @parking = Parking.new(parking_params) # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する
     @parking.provider_id = current_provider.id
     if @parking.save
+      params[:parking][:car_model_ids].each do |car_model_id|
+        # ["", "1", "2"]の""をはじく
+        unless car_model_id.blank?
+          parking_size = @parking.parking_sizes.new(car_model: CarModel.find(car_model_id))
+          parking_size.save
+        end
+      end
+      
+      
       require "google_drive"
-
-    # config.jsonを読み込んでセッションを確立
-    session = GoogleDrive::Session.from_config("config.json")
-    
-    # スプレッドシートをURLで取得
-    sp = session.spreadsheet_by_url(ENV['SHEET_URL'])
-    
-    # "シート1"という名前のワークシートを取得
-    ws = sp.worksheet_by_title("シート1")
-    
-    
-    
-    # セルを指定して値を更新　インデックスの基準は1
-    ws[@parking.id+2, 1] = @parking.id #セルA2
-    ws[@parking.id+2, 2] = @parking.provider_id # セルB2
-    ws[@parking.id+2, 3] = @parking.name
-    ws[@parking.id+2, 4] = @parking.zip_code
-    ws[@parking.id+2, 5] = @parking.address
-    ws[@parking.id+2, 6] = @parking.amount
-    ws[@parking.id+2, 7] = @parking.price
-    # ws[@parking.id+2, 8] = @parking.car_model
-    ws[@parking.id+2, 9] = @parking.created_at
-    ws[@parking.id+2, 10] = @parking.updated_at
-    
-    # saveで変更を保存、実際にスプレッドシートに反映させる
-    ws.save
+  
+      # config.jsonを読み込んでセッションを確立
+      session = GoogleDrive::Session.from_config("config.json")
+      
+      # スプレッドシートをURLで取得
+      sp = session.spreadsheet_by_url(ENV['SHEET_URL'])
+      
+      # "シート1"という名前のワークシートを取得
+      ws = sp.worksheet_by_title("シート1")
+      
+      # セルを指定して値を更新　インデックスの基準は1
+      ws[@parking.id+2, 1] = @parking.id #セルA2
+      ws[@parking.id+2, 2] = @parking.provider_id # セルB2
+      ws[@parking.id+2, 3] = @parking.name
+      ws[@parking.id+2, 4] = @parking.zip_code
+      ws[@parking.id+2, 5] = @parking.address
+      ws[@parking.id+2, 6] = @parking.amount
+      ws[@parking.id+2, 7] = @parking.price
+      # ws[@parking.id+2, 8] = @parking.car_model
+      ws[@parking.id+2, 9] = @parking.created_at
+      ws[@parking.id+2, 10] = @parking.updated_at
+      
+      # saveで変更を保存、実際にスプレッドシートに反映させる
+      ws.save
     
       redirect_to providers_parking_path(@parking), success: "登録を完了しました。"
     else
@@ -64,6 +71,6 @@ class Providers::ParkingsController < ApplicationController
   def parking_params # requireメソッドでオブジェクト名を指定,permitメソッドでキーを指定
     params.require(:parking).permit(
       :name, :description, :price, :is_active,
-      :amount, :address, :zip_code, car_model_ids:[]) #idsにすることで複数台のコレクションチェックボックスから複数データを送ることが可能
+      :amount, :address, :zip_code)
   end
 end
