@@ -1,8 +1,8 @@
-<div class="container sm-mt-5 mb-5">
+<div class="container my-5" style="height: 600px">
   <div class="row">
-    <h3 class="col-sm-mb-4"><strong>注文情報確認</strong></h3>
+    <h3>注文情報確認</h3>
   </div>
-  <div class="container">
+  <div class="container my-5">
     <div class="row">
       <div class=col-12>
         <table class='table table-bordered'>
@@ -23,28 +23,28 @@
     </div>
   </div>
   
-  <div class='row'>
+  <div class='row my-5'>
+    <div class="provover-show-line text-center coler:white">
     <h5><strong>支払い方法</strong></h5>
+    </div>
     <%= @rental.payment_method_i18n %>
   </div>
   
-  <div class='row'>
+  <div class='row my-5'>
+    <div class="provover-show-line text-center coler:white">
     <h5><strong>ご自身の住所<strong></h5>
+    </div>
     〒<%= @customer.zip_code %>
     <%= @customer.address %>
      <%= @customer.last_name %>
   </div>
-  <div class='row'>
+  <div class='row my-5'>
     <%= form_with model:@rental ,url: customers_rentals_path, method: :post do |f| %>
       <%= f.hidden_field :parking_id, value: @parking.id %>
       <%= f.hidden_field :total_payment, value: @total %>
       <%= f.hidden_field :payment_method, value: @rental.payment_method %>
       <%= f.hidden_field :rental_at, value: @rental.rental_at %>
-      
-  
-      <%= f.submit "注文を確定する", class:'btn btn-success' %>
+    <%= f.submit "注文を確定する", class:'btn btn-success' %>
     <% end %>
   </div>
-
-  </div>
-
+</div>

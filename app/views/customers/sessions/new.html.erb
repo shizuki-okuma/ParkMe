@@ -1,10 +1,10 @@
-<div class="container mt-5">
+<div class="container mt-5" style="height: 600px">
   <div class="row justify-content-center">
     <div class="col-sm-12 px-sm-0 offset-sm-1">
-      <h3>レンタル会員ログイン</h3>
+      <h3 class="my-5">レンタル会員ログイン</h3>
       
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="row">
+          <div class="row my-5">
             <!--ブレークポイントはsm(576px以上、768px未満)-->
             <div class="col-sm-3 px-sm-0 mb-3 offset-sm-1">
               <%= f.label "メールアドレス" %>
@@ -14,7 +14,7 @@
               <%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"40" , placeholder: "sample@example.com"%>
             </div>
           </div>
-          <div class="row">
+          <div class="row my-5">
             <div class="col-sm-3 px-sm-0 offset-sm-1">
               <%= f.label "パスワード" %>
             </div>
@@ -29,6 +29,10 @@
           </div>
         <% end %>
         
+        <div class="hometop-line text-center col-12 my-5">
+        まだ登録がお済みでない方は<%= link_to "☞こちら", new_customer_registration_path, style: "color: white;" %>をクリック
+      </div>
+      
     </div>
   </div>
 </div>

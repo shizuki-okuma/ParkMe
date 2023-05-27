@@ -1,7 +1,14 @@
-<div class="container text-center" style="height: 450px;">
-  <div class="row d-flex align-items-center">
+<div class="container text-center my-5">
+  <div class="row d-flex align-items-center my-5">
+    <div class="hometop-line col-12 my-5">
+      個人宅やマンション、事業所などの空いているスペースをお持ちの方(提供会員)が、<br>
+      駐車場の登録・掲載行い、駐車場を利用したい方（レンタル会員）に提供します。<br>
+レンタル会員は、駐車場をオンライン決済で簡単に予約し、利用することができ、<br>
+提供会員は、駐車場が利用された料金に応じた報酬を受け取る事ができます。<br>
+空いているスペースを有効活用した、今までにない新しいシェアリングサービスです。<br>
+    </div>
     <div class="col-3 text-right">レンタル会員の方は<%= link_to "こちら", customers_homes_customers_top_path, class: 'btn btn-success' %></div>
-      <div class="col-6">
+      <div class="col-6 my-5">
         <%= image_tag 'parking.jpg',width: '70%', height: '70%' %>
       </div>
     <div class="col-3 text-left">提供会員の方は<%= link_to "こちら", providers_homes_providers_top_path, class: 'btn btn-success' %></div>

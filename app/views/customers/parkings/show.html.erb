@@ -1,58 +1,56 @@
-<div class="container sm-mt-5 mb-5">
-  <div class="row">
-    <h3 class="col-sm-mb-4"><strong>駐車場詳細</strong></h3>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <table class= "table table-bordered">
-          <thead class="thead-light">
-            <tbody>
-              <tr>
-                <th>商品名</th>
-                <td><%= @parking.name %></td>
-              </tr>
-              <tr>
-                <th>郵便番号</th>
-                <td><%= @parking.zip_code %></td>
-              </tr>
-              <tr>
-                <th>住所</th>
-                <td><%= @parking.address %></td>
-              </tr>
-              <tr>
-                <th>台数</th>
-                <td><%= @parking.amount %></td>
-              </tr>
-              
-              <tr>
-                <th>商品説明 </th>
-                <td><%= @parking.description %></td>
-              </tr>
-              <tr>
-                <th>車種</th>
-                <td>
-                  <% @parking.car_models.each do |car_model| %>
-                  <%= car_model.name %>
-                  <% end %>
-                </td>
-              </tr>
-               <tr>
-                <th> 税込価格<br>(税抜価格)</th>
-                 <td><%= @parking.with_tax_price.to_s(:delimited) %>(<%= @parking.price.to_s(:delimited) %>)円
-              </tr>
-              <tr>
-                <th>販売ステータス</th>
-                <td>
-                  <%= @parking.is_active ? 'レンタル可能' : 'レンタル不可' %>
-                </td>
-              </tr>
-            </tbody>
-          </thead>
-        </table>
-        
-        <%= link_to "レンタルする", new_customers_rental_path(parking_id: @parking.id),class: "btn btn-lg btn-success" %>
-        
-      </div>
+<div class="container sm-mt-5 my-5" style="height: 600px">
+  <h3>駐車場詳細</h3>
+  <div class="row justify-content-center my-5">
+    <div class="col-12">
+      <table class= "table table-bordered">
+        <thead class="thead-light">
+          <tbody>
+            <tr>
+              <th>商品名</th>
+              <td><%= @parking.name %></td>
+            </tr>
+            <tr>
+              <th>郵便番号</th>
+              <td><%= @parking.zip_code %></td>
+            </tr>
+            <tr>
+              <th>住所</th>
+              <td><%= @parking.address %></td>
+            </tr>
+            <tr>
+              <th>台数</th>
+              <td><%= @parking.amount %></td>
+            </tr>
+            
+            <tr>
+              <th>商品説明 </th>
+              <td><%= @parking.description %></td>
+            </tr>
+            <tr>
+              <th>車種</th>
+              <td>
+                <% @parking.car_models.each do |car_model| %>
+                <%= car_model.name %>
+                <% end %>
+              </td>
+            </tr>
+             <tr>
+              <th> 税込価格<br>(税抜価格)</th>
+               <td><%= @parking.with_tax_price.to_s(:delimited) %>(<%= @parking.price.to_s(:delimited) %>)円
+            </tr>
+            <tr>
+              <th>販売ステータス</th>
+              <td>
+                <%= @parking.is_active ? 'レンタル可能' : 'レンタル不可' %>
+              </td>
+            </tr>
+          </tbody>
+        </thead>
+      </table>
     </div>
+    
+    <div class="row justify-content-center">
+      <%= link_to "レンタルする", new_customers_rental_path(parking_id: @parking.id),class: "btn btn-lg btn-success" %>
+    </div>
+  </div>
 </div>
