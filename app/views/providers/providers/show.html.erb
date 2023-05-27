@@ -85,15 +85,27 @@
             </tr>
           </thead>
           <tbody>
-          <% @all_parkings.each do |parking| %>
-          <% parking.rentals.each do |rental| %>
+          <% if @all_parkings.any? %>
+            <% @all_parkings.each do |parking| %>
+              <% if parking.rentals.any? %>
+                <% parking.rentals.each do |rental| %>
+                  <tr>
+                    <td><%= rental.id %></td>
+                    <td><%= rental.rental_at.strftime("%Y年%-m月%-d日")%></td>
+                    <td><%= rental.customer.last_name + rental.customer.first_name %></td>
+                    <td><%= link_to "詳細", customers_rental_path(rental.id), class: 'btn btn-success' %></td>
+                  </tr>
+                <% end %>
+              <% else %>
+                <tr>
+                  <td colspan="4">履歴はありません</td>
+                </tr>
+              <% end %>
+            <% end %>
+          <% else %>
             <tr>
-              <td><%= rental.id %></td>
-              <td><%= rental.rental_at.strftime("%Y年%-m月%-d日")%></td>
-              <td><%= rental.customer.last_name + rental.customer.first_name %></td>
-              <td><%= link_to "詳細", customers_rental_path(rental.id), class: 'btn btn-success' %></td>
+              <td colspan="4">パ-キングの登録がありません</td>
             </tr>
-          <% end %> 
           <% end %>
           </tbody>
         </table>
