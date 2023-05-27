@@ -1,7 +1,7 @@
 class Providers::ProvidersController < ApplicationController
   before_action :ensure_guest_provider, only: [:edit]
   def show
-    @provider = Provider.find(current_provider.id)
+    @provider = current_provider
     # @rentals = @provider.rentals.page(params[:page]).per(10)
     @parkings = @provider.parkings #登録した駐車場のみを表示
     #@all_parkings = Parking.where(id: @parkings.pluck(:id)).joins(:rentals).order(:rental_id).uniq

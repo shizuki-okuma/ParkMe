@@ -96,11 +96,12 @@
                     <td><%= link_to "詳細", customers_rental_path(rental.id), class: 'btn btn-success' %></td>
                   </tr>
                 <% end %>
-              <% else %>
-                <tr>
-                  <td colspan="4">履歴はありません</td>
-                </tr>
               <% end %>
+            <% end %>
+            <% if @all_parkings.map{|parking| parking.rentals.size }.sum == 0 %>
+              <tr>
+                <td colspan="4">履歴はありません</td>
+              </tr>
             <% end %>
           <% else %>
             <tr>
