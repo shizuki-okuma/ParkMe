@@ -11,7 +11,7 @@ class Rental < ApplicationRecord
   belongs_to :rental_price
   
   enum payment_method: { credit_card: 0, transfer: 1 }
-  enum status: { rentaled: 0 , rental: 1 , cancel: 2 ,waiting:3 }
+  enum status: { waiting: 0 , rental: 1 , rentaled: 2 ,cancel:3 }
   
   def with_tax_price
       (price * 1.1).floor

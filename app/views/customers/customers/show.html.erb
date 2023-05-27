@@ -53,7 +53,6 @@
             <th>レンタル詳細</th>
             <th>ステータス変更フォーム</th>
             <th>レンタルステータス</th>
-            <th>キャンセルボタン</th>
           </tr>
         </thead>
         <tbody>
@@ -70,7 +69,6 @@
                 <% end %>
               </td>
               <td><%= rental.status_i18n %></td>
-              <td><%= link_to "キャンセル", cancel_customers_rental_path(rental.id), method: :post, class: 'btn btn-success' %></td>  
             </tr>
           <% end %>
           </tbody>
