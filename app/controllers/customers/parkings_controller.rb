@@ -1,4 +1,6 @@
 class Customers::ParkingsController < ApplicationController
+  before_action :authenticate_customer!
+  
   def show
     @parking = Parking.find(params[:id])
     # @rental = current_customer.rentals.find(params[:id])

@@ -4,7 +4,6 @@
       <%= render 'searches/search' %>
 
       <table class="table table-borderless mb-0">
-      <% if @range == "駐車場名" || @range == "郵便番号" %>
         <tbody>
           <% @parkings.each do |parking| %>
             <tr class="clickable-row" onclick='window.location="/customers/parkings/<%= parking.id %>"' role="link">
@@ -12,16 +11,6 @@
             </tr>
           <% end %>
         </tbody>
-      <% else %>
-        <!--検索対象モデルがparkingではない時(= 検索対象モデルがcar_modelの時) -->
-        <tbody>
-          <%# @car_models.each do |car_model| %>
-            <tr>
-              <td><%#= car_model.name %></td>
-            </tr>
-          <%# end %>
-        </tbody>
-      <% end %>
       </table>
       
     </div>

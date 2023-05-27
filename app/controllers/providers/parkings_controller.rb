@@ -35,7 +35,7 @@ class Providers::ParkingsController < ApplicationController
       ws[@parking.id+2, 5] = @parking.address
       ws[@parking.id+2, 6] = @parking.amount
       ws[@parking.id+2, 7] = @parking.price
-      # ws[@parking.id+2, 8] = @parking.car_model
+      ws[@parking.id+2, 8] = @parking.car_model
       ws[@parking.id+2, 9] = @parking.created_at
       ws[@parking.id+2, 10] = @parking.updated_at
       
@@ -56,6 +56,14 @@ class Providers::ParkingsController < ApplicationController
   def update
     @parking = Parking.find(params[:id])
     if @parking.update(parking_params) 
+      @parking.parking_sizes.destroy_all
+      params[:parking][:car_model_ids].each do |car_model_id|
+        # ["", "1", "2"]の""をはじく
+        unless car_model_id.blank?
+          parking_size = @parking.parking_sizes.new(car_model: CarModel.find(car_model_id))
+          parking_size.save
+        end
+      end
       redirect_to providers_parking_path(@parking), success: "変更を完了しました。"
     else
       render :edit, warning: "変更できませんでした。"

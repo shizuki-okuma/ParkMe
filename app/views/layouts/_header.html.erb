@@ -7,8 +7,6 @@
       管理者ログイン中
     <% elsif provider_signed_in? %>
       ようこそ、<%= current_provider.last_name %><%= current_provider.first_name %>様
-    <% else %>
-     <span class="text-center ml-5">ようこそ、ゲスト様</span>
     <% end %>
   
     <button class="navbar-toggler" style="background-color:#FFCC00;" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
