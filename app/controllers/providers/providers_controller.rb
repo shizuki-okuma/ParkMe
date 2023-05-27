@@ -4,8 +4,8 @@ class Providers::ProvidersController < ApplicationController
     @provider = Provider.find(current_provider.id)
     # @rentals = @provider.rentals.page(params[:page]).per(10)
     @parkings = Parking.where(provider_id: current_provider.id) #登録した駐車場のみを表示
-    # @all_parkings = Parking.where(id: @parkings.pluck(:id)).joins(:rentals).order(:rental_id).uniq
-    @all_parkings = current_provider.parkings.order(:rental_id)
+    @all_parkings = Parking.where(id: @parkings.pluck(:id)).joins(:rentals).order(:rental_id).uniq
+    # @all_parkings = current_provider.parkings.order(:rental_id)
   end
   
   def edit
