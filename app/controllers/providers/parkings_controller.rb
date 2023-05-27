@@ -29,9 +29,8 @@ class Providers::ParkingsController < ApplicationController
       ws[@parking.id+2, 5] = @parking.address
       ws[@parking.id+2, 6] = @parking.amount
       ws[@parking.id+2, 7] = @parking.price
-      ws[@parking.id+2, 8] = @parking.car_models
-      ws[@parking.id+2, 9] = @parking.created_at
-      ws[@parking.id+2, 10] = @parking.updated_at
+      ws[@parking.id+2, 8] = @parking.created_at
+      ws[@parking.id+2, 9] = @parking.updated_at
       
       # saveで変更を保存、実際にスプレッドシートに反映させる
       ws.save
