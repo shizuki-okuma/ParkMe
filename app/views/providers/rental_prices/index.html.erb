@@ -19,7 +19,7 @@
         <% @rental_prices.each do |rental_price| %>
           <tr>
             <td><%= rental_price.zip_code %></td>
-            <td class="text-right"><%= rental_price.average_price(rental_price.zip_code) %></td>
+            <td class="text-right"><%= rental_price.average_price(rental_price.zip_code) || "_" %></td>
           </tr>
         <% end %>
       </tbody>
