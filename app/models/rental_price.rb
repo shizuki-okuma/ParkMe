@@ -11,7 +11,8 @@ class RentalPrice < ApplicationRecord
     # 
     # Parking.all.joins(:rentals).pluck(:total_payment).sum
     # ex 7700
-    return nil if @all_parkings.map{|parking| parking.rentals.size }.sum == 0
-    Parking.where(zip_code: zip_code).joins(:rentals).pluck(:total_payment).sum / Parking.where(zip_code: zip_code).joins(:rentals).group(:zip_code).count.values[0]
+    parkings = Parking.where(zip_code: zip_code)
+    return nil if parkings.map{|parking| parking.rentals.size }.sum == 0
+    parkings.joins(:rentals).pluck(:total_payment).sum / parkings.joins(:rentals).group(:zip_code).count.values[0]
   end
 end
