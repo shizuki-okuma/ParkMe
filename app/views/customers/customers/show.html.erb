@@ -65,7 +65,7 @@
               <td><%= link_to "詳細", customers_rental_path(rental.id), class: 'btn btn-success' %></td>
               <td>
                 <%= form_with model: @rental, url: customers_rental_path(rental.id), method: :patch do |f| %>
-                <%= f.select :status, [['レンタル済み',0],['レンタル中',1], ['キャンセル',2], ['待機中',3]], {}, {'onChange'=>'javascript: this.form.submit()'} %>
+                <%= f.select :status, [['待機中',0],['レンタル中',1], ['レンタル済み',2], ['キャンセル',3]], {}, {'onChange'=>'javascript: this.form.submit()'} %>
                 <% end %>
               </td>
               <td><%= rental.status_i18n %></td>
