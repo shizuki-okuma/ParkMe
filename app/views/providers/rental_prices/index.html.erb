@@ -1,29 +1,32 @@
-<div class="container">
+<div class="container my-5" style="height: 600px">
   <h5>地域別平均貸し出し金額</h5>
-    <div class="row">
-      <div class="col-10">
-    <%= form_with url: providers_rental_prices_path, method: :get do %>
-    <%= label_tag :zip_code, "地域選択：" %>
-    <%= select_tag :zip_code, options_for_select(RentalPrice.distinct.pluck(:zip_code)) %>
-    <%= submit_tag "表示" %>
-    <% end %>
-  
-    <table>
-      <thead>
-        <tr>
-          <th>地域名</th>
-          <th>平均貸し出し金額</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @rental_prices.each do |rental_price| %>
-          <tr>
-            <td><%= rental_price.zip_code %></td>
-            <td class="text-right"><%= rental_price.average_price(rental_price.zip_code) || "_" %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <div class="row justify-content-center my-5">
+      <div class="col-10  my-5">
+        <%= form_with url: providers_rental_prices_path, method: :get do %>
+          <div class="form-group">
+            <%= label_tag :zip_code, "地域選択：",class: "col-3 control-label" %>
+            <%= select_tag :zip_code, options_for_select(RentalPrice.distinct.pluck(:zip_code)) ,class: "col-4 control-label"%>
+            <%= submit_tag "表示" %>
+            <% end %>
+          </div>
+        
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>地域名</th>
+                  <th>平均貸し出し金額</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @rental_prices.each do |rental_price| %>
+                  <tr>
+                    <td><%= rental_price.zip_code %></td>
+                    <td class="text-right">¥<%= rental_price.average_price(rental_price.zip_code) || "_" %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          
+      </div>
     </div>
-  </div>
 </div>
