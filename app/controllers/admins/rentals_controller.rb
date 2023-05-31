@@ -3,7 +3,6 @@ class Admins::RentalsController < ApplicationController
   
   def index
     @rentals = Rental.page(params[:page])
-    
   end
   
   def show
