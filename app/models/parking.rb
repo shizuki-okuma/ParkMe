@@ -1,6 +1,6 @@
 class Parking < ApplicationRecord
   validates :name, presence: true
-  validates :zip_code, presence: true
+  validates :zip_code, presence: true, length: { is: 7 }
   validates :address, presence: true
   validates :amount, presence: true
   validates :description, presence: true
