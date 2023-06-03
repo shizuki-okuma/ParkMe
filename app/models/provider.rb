@@ -8,7 +8,7 @@ class Provider < ApplicationRecord
   validates :first_name_kana, presence: true
   validates :zip_code, presence: true, length: { is: 7 }
   validates :address, presence: true
-  validates :phone_number, presence: true
+  validates :phone_number, presence: true, length: { is: 11 }
   validates :email, presence: true
   
   has_many :parkings, dependent: :destroy
