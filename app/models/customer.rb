@@ -11,7 +11,7 @@ class Customer < ApplicationRecord
   validates :email, presence: true
   validates :zip_code, presence: true, length: { is: 7 }
   validates :address, presence: true
-  validates :phone_number, presence: true
+  validates :phone_number, presence: true, length: { is: 11 }
   
   
   has_many :rentals, dependent: :destroy
