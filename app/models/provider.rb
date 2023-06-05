@@ -21,9 +21,9 @@ class Provider < ApplicationRecord
       customer.last_name = "ゲス" 
       customer.first_name_kana = "ト"
       customer.last_name_kana = "ゲス"
-      customer.zip_code = "123123"
-      customer.address = "東京都杉並区〇〇"
-      customer.phone_number = "08012341234"
+      customer.zip_code = "1660016"
+      customer.address = "東京都杉並区成田西4-3"
+      customer.phone_number = "08000000000"
       customer.is_deleted = "false"
     end
   end
