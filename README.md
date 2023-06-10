@@ -10,28 +10,28 @@
 
 
 ### ターゲットユーザ
-当サイトのターゲットユーザーは、自分が持っている駐車場を有効活用したいと考えている個人や事業者、また、駐車場を探しているドライバー層を想定しています。
+当サイトのターゲットユーザーは、自分が持っているスペースを有効活用したいと考えている個人や事業者、また、駐車場を探しているドライバー層を想定しています。
 
 
 ### 主な利用シーン
-- 駐車場を所有していて、駐車場を使用していない時間帯がある方
 - 空きスペースを有効活用しようとしている方
 - 駐車場を安価に利用したい方
 - 駐車場を探している方
 
 ## 設計書
+---
 ER図
 https://drive.google.com/file/d/1tOlxxRnVNaCmnJQ834trD2325pz7IOBg/view?usp=sharing
-
+---
 アプリケーション詳細設計書
 https://docs.google.com/spreadsheets/d/1QNAXEXfDRz31lNu2_Yh1LUC5XIBRoWNe_vP_EqblEi4/edit?usp=sharing
-
+---
 テーブル定義書
 https://docs.google.com/spreadsheets/d/1i_A33flq_KfqprKn0EZSo8nw8lSTLraQnATyHEkJJWI/edit?usp=sharing
-
+---
 UIflows
 https://drive.google.com/file/d/1aVoxhxllfYNpOEAB8EOD-XW0-TAbhr0C/view?usp=sharing
-
+---
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
@@ -40,6 +40,5 @@ https://drive.google.com/file/d/1aVoxhxllfYNpOEAB8EOD-XW0-TAbhr0C/view?usp=shari
 - IDE：Cloud9
 
 ## 使用素材
-- 使用検討中です
-<!--- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください-->
-<!--- 使用しない場合は、使用素材の項目をREADMEから削除してください。-->
+-illustAC
+　-https://www.ac-illust.com/
